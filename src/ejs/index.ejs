@@ -1,0 +1,26 @@
+<%
+    page = 'top'
+    path = ''
+%>
+<%-
+    include('./layout/_head', {
+        meta: pageData['top']
+    });
+%>
+<main>
+    <!-- You can delite and start at below -->
+    <div class="l-container">
+        <nav class="c-breadcrumbs">
+            <ul itemscope itemtype="https://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="" itemprop="item"><span itemprop="name">TOP</span></a><meta itemprop="position" content="1" /></li>
+                <li>Page-01</li>
+            </ul>
+        </nav>
+        <h2>Happy coding :)</h2>
+    </div>
+</main>
+<%-
+    include('./layout/_footer', {
+        meta: pageData['top']
+    });
+%>

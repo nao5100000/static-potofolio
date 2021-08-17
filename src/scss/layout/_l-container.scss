@@ -1,0 +1,10 @@
+@use "../foundation/mixin" as m;
+
+.l-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    @include m.mq(sp_min) {
+        width: 90%;
+    }
+}

@@ -1,0 +1,8 @@
+# # dev env
+# node_modules
+.DS_Store
+# .htaccess
+
+# # folder
+# src/images/
+# dist/images/
