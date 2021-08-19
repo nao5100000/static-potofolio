@@ -1,13 +1,12 @@
 // Add target and rel to external links
 const domain = document.domain;
 const regexp = new RegExp(domain);
-const elements = document.getElementsByTagName('a');
-for(let element of elements) {
-    let href = element.getAttribute('href');
-    if(!regexp.test(href)) {
-        if(href.match(/^https:\/\//) || href.match(/\.pdf/)) {
-            element.setAttribute('target', '_blank');
-            element.setAttribute('rel', 'noopener');
+const links = document.getElementsByTagName('a');
+for(let link of links) {
+    if(!regexp.test(link.href)) {
+        if(link.href.match(/^https:\/\//) || link.href.match(/\.pdf/)) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener');
         }
     }
 }
