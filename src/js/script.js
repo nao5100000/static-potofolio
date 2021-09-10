@@ -11,7 +11,7 @@ for(let link of links) {
     }
 }
 
-// Open global menu 
+// Open global menu
 const menuBtn = document.getElementById('js-menu-toggle');
 const gnav = document.getElementById('js-global-menu');
 const body = document.querySelector('body');
@@ -29,3 +29,22 @@ menuBtn.addEventListener('click', () => {
         window.scrollTo(0, scrollValue);
     }
 });
+
+// Internal link
+const menus = document.querySelectorAll('.global__menu > ul > li > a');
+menus.forEach(menu => {
+    menu.addEventListener('click', () => {
+        if(body.classList.contains('open')) {
+            body.classList.remove('open');
+            gnav.classList.remove('open');
+        }
+    })
+});
+
+// Adjust link position
+window.onload = () => {
+    if(window.location.hash == "") {
+        return;
+    }
+    document.getElementById(window.location.hash.slice(1)).scrollIntoView(true);
+}
