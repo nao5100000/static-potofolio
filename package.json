@@ -10,7 +10,7 @@
     "html/compile": "node task-ejs.js",
     "html": "npm-run-all html/*",
     "css/sass": "sass src/scss/style.scss dist/css/style.min.css --style compressed --no-source-map",
-    "css/postcss": "postcss dist/css/style.min.css -o dist/css/style.min.css",
+    "css/postcss": "postcss dist/css/style.min.css -u autoprefixer -o dist/css/style.min.css",
     "css": "npm run clean/css && npm-run-all -s css/*",
     "js/babel": "./node_modules/.bin/babel ./src/js --out-dir ./dist/js",
     "js/uglifyjs": "uglifyjs-folder dist/js -eo dist/js",
