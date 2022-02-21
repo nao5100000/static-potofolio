@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "clean/css": "rimraf dist/css && mkdir -p dist/css",
     "clean/js": "rimraf dist/js && mkdir -p dist/js",
