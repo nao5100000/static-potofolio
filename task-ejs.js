@@ -1,8 +1,8 @@
-const fs = require("fs");
-const path = require("path");
-const ejs = require("ejs");
-const glob = require("glob");
-const makeDir = require("make-dir");
+import fs from "fs";
+import path from "path";
+import ejs from "ejs";
+import glob from "glob";
+import makeDir from "make-dir";
 
 const srcDir = `${process.cwd()}/src/ejs`;
 const distDir = `${process.cwd()}/dist`;

@@ -1,13 +1,13 @@
-const imagemin = require('imagemin-keep-folder');
-const imageminMozjpeg  = require('imagemin-mozjpeg');
-const imageminPngquant = require('imagemin-pngquant');
-const imageminGifsicle = require('imagemin-gifsicle');
-const imageminSvgo = require('imagemin-svgo');
+import imagemin from "imagemin-keep-folder";
+import imageminMozjpeg from "imagemin-mozjpeg";
+import imageminPngquant from "imagemin-pngquant";
+import imageminGifsicle from "imagemin-gifsicle";
+import imageminSvgo from "imagemin-gifsicle";
 
 imagemin(['src/images/**/*.{jpg,jpeg,png,gif,svg,ico,pdf}'], {
     plugins: [
         imageminMozjpeg({ quality: 80 }),
-        imageminPngquant({ quality: [0.3, 0.5] }),
+        imageminPngquant({ quality: [0.5, 0.8] }),
         imageminGifsicle(),
         imageminSvgo()
     ],
