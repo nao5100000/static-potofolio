@@ -47,11 +47,11 @@
     "make-dir": "^3.1.0",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
-    "postcss": "^8.4.6",
+    "postcss": "^8.4.7",
     "postcss-cli": "^9.1.0",
     "rimraf": "^3.0.2",
-    "sass": "^1.49.7",
-    "uglify-js": "^3.15.1",
+    "sass": "^1.49.9",
+    "uglify-js": "^3.15.2",
     "uglifyjs-folder": "^3.0.0",
     "watch": "^1.0.2"
   },
@@ -59,6 +59,5 @@
     "last 2 version",
     "ie >= 11",
     "Android >= 4"
-  ],
-  "dependencies": {}
+  ]
 }
