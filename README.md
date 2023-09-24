@@ -7,4 +7,4 @@ Install modules
 
 Run command
 
-``% npm run watch``
+``% npm run watch``# static-potofolio
