@@ -1,8 +1,8 @@
 # # dev env
 node_modules/
 .DS_Store
-# .htaccess
+.htaccess
 
 # # folder
-# src/images/
-# dist/images/
+src/images/
+dist/images/

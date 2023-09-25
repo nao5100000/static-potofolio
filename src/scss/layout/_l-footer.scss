@@ -2,19 +2,4 @@
 @use "../foundation/font" as f;
 @use "../foundation/mixin" as m;
 
-.l-footer {
-    padding: 24px 0;
-    .copyright {
-        color: c.$black;
-        font-family: f.$font-sans;
-        font-size: 0.625rem;
-        font-weight: 200;
-        text-align: center;
-        @include m.mq(sp) {
-            font-size: 0.562rem;
-        }
-        @include m.mq(sp_min) {
-            font-size: 0.5rem;
-        }
-    }
-}
+

@@ -1,0 +1,114 @@
+@use "../../foundation/color" as c;
+@use "../../foundation/font" as f;
+@use "../../foundation/mixin" as m;
+
+.pg-index-main{
+    position: relative;
+    height: 100vh;
+    h1{
+        font-size: clamp(3rem,4.5vw,5rem);
+        display: inline-block;
+        -webkit-text-fill-color: transparent;
+        background-image: linear-gradient(141deg, #969699, #1e1e22);
+        -webkit-background-clip: text;
+        font-weight: var(--fw-bold);
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        transform: translate(-50%,-50%);
+        text-align: left;
+    }
+    .particle-wrapper{
+        z-index: -75;
+        width: 700px;
+        height: 310px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        transition: all .5s ease-in-out;
+        will-change: opacity, transform;
+        opacity: 1;
+        transform: translate3d(0px, 0px, 0px) scale3d(1.5, 1.5, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+        transform-style: preserve-3d;
+        .particle{
+            position: absolute;
+            background-color: c.$dark-gray;
+            &-8{
+                width: 11px;
+                height: 11px;
+                opacity: .15;
+
+                border-radius: 3px;
+                top: 111px;
+                right: 64px;
+                transform: rotate(17deg);
+            }
+            &-7{
+                width: 9px;
+                height: 9px;
+                opacity: .2;
+                border-radius: 2px;
+                top: 213px;
+                right: 104px;
+                transform: rotate(-14deg);
+            }
+            &-6{
+                width: 12px;
+                height: 12px;
+                opacity: .2;
+                border-radius: 4px;
+                top: 251px;
+                right: 262px;
+                transform: rotate(14deg);
+            }
+            &-5{
+                width: 12px;
+                height: 12px;
+                opacity: .2;
+                border-radius: 4px;
+                top: 203px;
+                right: 448px;
+                transform: rotate(-11deg);
+            }
+            &-4{
+                width: 15px;
+                height: 15px;
+                opacity: .2;
+                background-color: #000;
+                border-radius: 5px;
+                position: absolute;
+                top: 64px;
+                right: 428px;
+                transform: rotate(26deg);
+            }
+            &-3{
+                width: 9px;
+                height: 9px;
+                opacity: .4;
+                border-radius: 2px;
+                top: 94px;
+                right: 624px;
+                transform: rotate(-17deg);
+            }
+            &-2{
+                width: 9px;
+                height: 9px;
+                opacity: .4;
+                border-radius: 2px;
+                top: 94px;
+                right: 624px;
+                transform: rotate(-17deg);
+            }
+            &-1{
+                width: 20px;
+                height: 20px;
+                opacity: .4;
+                border-radius: 6px;
+                top: 90px;
+                right: 159px;
+                transform: rotate(51deg);
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+@use "../../foundation/color" as c;
+@use "../../foundation/font" as f;
+@use "../../foundation/mixin" as m;
+
+.pg-index-horizontal{
+    overflow: hidden;
+    .hor-wrapper{
+        @include m.flexbox(space-between,center,nowrap);
+        &__card{
+            width: 25%;
+            padding: 1.25vw;
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
