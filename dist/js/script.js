@@ -55,15 +55,17 @@ window.onload = function () {
   document.getElementById(window.location.hash.slice(1)).scrollIntoView(true);
 };
 
-var y, num, num02;
+var y, num, num02, num03;
 var particleW = document.getElementById('js-particle-wrapper');
 var particles = document.querySelectorAll('.particle');
+var horizontal = document.querySelectorAll('.js-hor');
 
 var topParticle = function topParticle() {
   window.addEventListener('scroll', function () {
     y = window.scrollY;
     num = y / 500;
     num02 = y / 1000;
+    num03 = y / 10;
     particleW.style.cssText = "\n            opacity: ".concat(1 - num, ";\n            transform: scale3d( ").concat(1.5 + num02, ", ").concat(1.5 + num02, ", 1);\n        ");
 
     if (.5 >= particleW.style.opacity) {
@@ -71,9 +73,106 @@ var topParticle = function topParticle() {
     }
 
     if (1.5 + num02 >= 2) {
-      particleW.style.transform = scale3d(2, 2, 1);
+      particleW.style.transform = 'scale3d(2, 2, 1)';
     }
+
+    horizontal[0].style.transform = "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -".concat(num03, ", 0, 0, 1)");
+    horizontal[1].style.transform = "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, ".concat(num03, ", 0, 0, 1)");
   });
 };
 
 topParticle();
+var ham = document.getElementById('js-ham');
+window.addEventListener('scroll', function () {
+  y = window.scrollY;
+
+  if (500 <= y) {
+    ham.classList.add('is_active');
+  } else {
+    ham.classList.remove('is_active');
+  }
+});
+
+var mouseHover = function mouseHover() {
+  var pointerArea = document.querySelectorAll('.js-hover');
+  var pointerElem = document.getElementById('js-pointer');
+  var pointerHov = document.querySelectorAll('.js-hov-res');
+
+  if (pointerArea.length === 0) {
+    return;
+  }
+
+  var _loop = function _loop(i) {
+    pointerArea[i].addEventListener('mouseenter', function () {
+      pointerElem.classList.add('is_active');
+      pointerHov[i].classList.add('is_active');
+    });
+    pointerArea[i].addEventListener('mouseleave', function () {
+      pointerElem.classList.remove('is_active');
+      pointerHov[i].classList.remove('is_active');
+    });
+    pointerArea[i].addEventListener('mousemove', function (e) {
+      pointerElem.style.top = "".concat(e.clientY, "px");
+      pointerElem.style.left = "".concat(e.clientX, "px");
+      pointerHov[i].style.top = "".concat(e.clientY, "px");
+      pointerHov[i].style.left = "".concat(e.clientX, "px");
+    });
+  };
+
+  for (var i = 0; i < pointerArea.length; i++) {
+    _loop(i);
+  }
+};
+
+mouseHover(); // mouse 
+
+var toX, toY, elemData;
+
+var buttonSticerAddEvent = function buttonSticerAddEvent(trigger, target, num) {
+  trigger.addEventListener("mouseenter", function (e) {
+    elemData = target.getBoundingClientRect();
+  });
+  trigger.addEventListener('mousemove', function (e) {
+    toX = (e.clientX - elemData.width / 2 - elemData.left) * num;
+    toY = (e.clientY - elemData.height / 2 - elemData.top) * num;
+    target.style.transform = "translate(".concat(toX, "px, ").concat(toY, "px)");
+  });
+  trigger.addEventListener('mouseleave', function () {
+    target.style.transform = "translate(0px,0px)";
+  });
+};
+
+var buttonHovSticker = function buttonHovSticker() {
+  var hovLink = document.querySelectorAll('.js-stick-link');
+  Array.from(hovLink).map(function (item) {
+    buttonSticerAddEvent(item, item, .5);
+  });
+};
+
+buttonHovSticker();
+var frontParticles = document.querySelectorAll('.particle-front');
+var backParticles = document.querySelectorAll('.particle-back');
+
+var topParticleSticker = function topParticleSticker() {
+  buttonSticerAddEvent(particleW, particles);
+  Array.from(frontParticles).map(function (frontParticle) {
+    buttonSticerAddEvent(particleW, frontParticle, .04);
+  });
+  Array.from(backParticles).map(function (backParticle) {
+    buttonSticerAddEvent(particleW, backParticle, .03);
+  });
+};
+
+topParticleSticker();
+var bodyHeight = document.body.clientHeight;
+var windowHeight = window.innerHeight;
+var bottomPoint = bodyHeight - windowHeight;
+document.addEventListener('scroll', function () {
+  var currentPos = window.scrollY;
+
+  if (bottomPoint <= currentPos) {
+    console.log('true');
+  } else {
+    console.log('false');
+  }
+});

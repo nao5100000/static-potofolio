@@ -7,52 +7,67 @@
         meta: pageData['top']
     });
 %>
-        <main>
+        <main id="js-main">
             <section class="pg-index-main">
                 <h1 class="u-width-960">Hi! I'm Nao.<br>
                 I build things for the web</h1>
                 <div class="particle-wrapper" id="js-particle-wrapper">
-                    <div class="particle particle-8"></div>
-                    <div class="particle particle-7"></div>
-                    <div class="particle particle-6"></div>
-                    <div class="particle particle-5"></div>
-                    <div class="particle particle-4"></div>
-                    <div class="particle particle-3"></div>
-                    <div class="particle particle-2"></div>
-                    <div class="particle particle-1"></div>
+                    <div class="particle particle-front particle-8"></div>
+                    <div class="particle particle-back particle-7"></div>
+                    <div class="particle particle-front particle-6"></div>
+                    <div class="particle particle-back particle-5"></div>
+                    <div class="particle particle-front particle-4"></div>
+                    <div class="particle particle-back particle-3"></div>
+                    <div class="particle particle-front particle-2"></div>
+                    <div class="particle particle-back particle-1"></div>
                 </div>
             </section>
             <section class="pg-index-about">
 
             </section>
             <section class="pg-index-works u-width-960">
-                <div class="works-card">
-                    <div class="works-card__wrapper">
-                        <img src="<%= path %>images/index/img.png" alt="">
-                    </div>
-                    <a href="" class="c-all-link"></a>
+                <div class="pg-index-works__pointer" id="js-pointer">
+                    view
                 </div>
-                <div class="works-card">
+                <div class="works-card js-hover">
                     <div class="works-card__wrapper">
                         <img src="<%= path %>images/index/img.png" alt="">
                     </div>
                     <a href="" class="c-all-link"></a>
+                    <div class="works-card__hov js-hov-res">
+                        <img src="<%= path %>images/index/img02.png" alt="">
+                    </div>
                 </div>
-                <div class="works-card">
+                <div class="works-card js-hover">
                     <div class="works-card__wrapper">
                         <img src="<%= path %>images/index/img.png" alt="">
                     </div>
                     <a href="" class="c-all-link"></a>
+                    <div class="works-card__hov js-hov-res">
+                        <img src="<%= path %>images/index/img02.png" alt="">
+                    </div>
                 </div>
-                <div class="works-card">
+                <div class="works-card js-hover">
                     <div class="works-card__wrapper">
                         <img src="<%= path %>images/index/img.png" alt="">
                     </div>
                     <a href="" class="c-all-link"></a>
+                    <div class="works-card__hov js-hov-res">
+                        <img src="<%= path %>images/index/img02.png" alt="">
+                    </div>
+                </div>
+                <div class="works-card js-hover">
+                    <div class="works-card__wrapper">
+                        <img src="<%= path %>images/index/img.png" alt="">
+                    </div>
+                    <a href="" class="c-all-link"></a>
+                    <div class="works-card__hov js-hov-res">
+                        <img src="<%= path %>images/index/img02.png" alt="">
+                    </div>
                 </div>
             </section>
             <section class="pg-index-horizontal">
-                <div class="hor-wrapper">
+                <div class="hor-wrapper js-hor">
                     <div class="hor-wrapper__card">
                         <div class="img_wrapper">
                             <img src="<%= path %>images/index/img.png" alt="">
@@ -75,7 +90,7 @@
                     </div>
 
                 </div>
-                <div class="hor-wrapper">
+                <div class="hor-wrapper hor-wrapper-reverse js-hor">
                     <div class="hor-wrapper__card">
                         <div class="img_wrapper">
                             <img src="<%= path %>images/index/img.png" alt="">
@@ -96,7 +111,6 @@
                             <img src="<%= path %>images/index/img.png" alt="">
                         </div>
                     </div>
-
                 </div>
 
             </section>

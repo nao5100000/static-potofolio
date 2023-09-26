@@ -9,11 +9,14 @@
     --maxW: 1200; /* viewport width at the max font size */
     --fz-normal: clamp(.8rem,3vw,1rem);
     --fz-bigger: calc(2rem,3vw,5rem);
-    --fw-bold:600;
+    --fw-bold:700;
     --fw-regular:400;
     --fw-light:300;
     --bs-normal:4px 4px 11px rgba(0,0,0,.1);
     --br:20px;
+
+    --cb01:cubic-bezier(.24,.45,.32,1);
+    --cb02:cubic-bezier(0.36, 0, 0.66, 0)
 }
 
 *, *:before, *:after {
@@ -37,7 +40,7 @@ body {
     width: 100%;
     background-color: white;
     color: black;
-    font-family: f.$font-sans;
+    font-family: f.$font-inter;
     line-height: 1.8;
     letter-spacing: 0.1rem;
     font-weight: 400;
