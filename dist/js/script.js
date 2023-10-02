@@ -217,6 +217,20 @@ var gsapFadeInTarget = document.querySelectorAll('.js-fadeIn .line_inner');
 var gsapFadeInOpacity = document.querySelectorAll('.js-fadeIn-opacity');
 gsapFadeIn(gsapFadeInTarget, 40, 1, 1.5);
 gsapFadeIn(gsapFadeInOpacity, 60, 0, 2);
+var footer = document.querySelector('footer');
+var footerCircle = document.getElementById('js-footer-circle');
+gsap.to(footerCircle, {
+  scaleY: 0,
+  ease: 'Power1.easeOut',
+  scrollTrigger: {
+    trigger: '.pg-index-horizontal',
+    start: 'top top',
+    end: function end() {
+      return innerHeight + ' top';
+    },
+    scrub: true
+  }
+});
 var bodyHeight = document.body.clientHeight;
 var windowHeight = window.innerHeight;
 var bottomPoint = bodyHeight - windowHeight;

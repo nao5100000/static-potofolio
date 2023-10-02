@@ -22,6 +22,7 @@ const nav = document.getElementById('js-nav');
 const hamBg = document.getElementById('js-ham-bg');
 const ham = document.getElementById('js-ham');
 const topButton = document.getElementById('js-top-button');
+
 ham.addEventListener('click', () => {
     hamBg.classList.contains('is_active') ? hamBg.classList.remove('is_active') : hamBg.classList.add('is_active')
     nav.classList.contains('is_active') ? nav.classList.remove('is_active') : nav.classList.add('is_active')
@@ -41,7 +42,6 @@ window.addEventListener('scroll', () => {
         if (hamBg.classList.contains('is_active')) hamBg.classList.remove('is_active');
     }
     if (y <= 90) topButton.style.transform = `translate(0,${90 - y}px)`
-
 })
 
 // Internal link
@@ -204,6 +204,18 @@ const gsapFadeInOpacity = document.querySelectorAll('.js-fadeIn-opacity');
 gsapFadeIn(gsapFadeInTarget, 40, 1, 1.5);
 gsapFadeIn(gsapFadeInOpacity, 60, 0, 2);
 
+const footer = document.querySelector('footer');
+const footerCircle = document.getElementById('js-footer-circle');
+gsap.to(footerCircle, {
+    scaleY: 0,
+    ease: 'Power1.easeOut',
+    scrollTrigger: {
+        trigger: '.pg-index-horizontal', 
+        start: 'top top',
+        end: () => innerHeight + ' top',
+        scrub: true,
+    }
+})
 
 
 const bodyHeight = document.body.clientHeight;

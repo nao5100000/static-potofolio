@@ -75,80 +75,71 @@
             background-color: c.$dark-gray;
             will-change: transform;
             transition: transform .3s cubic-bezier(.24,.45,.32,1);
+            border-radius: 50%;
             &-8{
                 width: 11px;
                 height: 11px;
-                opacity: .15;
-
-                border-radius: 3px;
+                opacity: .6;
                 top: 111px;
                 right: 64px;
-                transform: rotate(17deg);
+                background-color: c.$green;
             }
             &-7{
                 width: 9px;
                 height: 9px;
-                opacity: .2;
-                border-radius: 2px;
+                opacity: .4;
                 top: 213px;
                 right: 104px;
-                transform: rotate(-14deg);
+                background-color: c.$purple;
             }
             &-6{
                 width: 12px;
                 height: 12px;
-                opacity: .2;
-                border-radius: 4px;
+                opacity: .8;
                 top: 251px;
                 right: 262px;
-                transform: rotate(14deg);
+                background: c.$pink;
             }
             &-5{
                 width: 12px;
                 height: 12px;
-                opacity: .2;
-                border-radius: 4px;
+                opacity: .4;
                 top: 203px;
                 right: 448px;
-                transform: rotate(-11deg);
+                background: c.$green;
             }
             &-4{
                 width: 15px;
                 height: 15px;
-                opacity: .2;
-                background-color: #000;
-                border-radius: 5px;
+                opacity: .7;
+                background: c.$pink;
                 position: absolute;
                 top: 64px;
                 right: 428px;
-                transform: rotate(26deg);
             }
             &-3{
                 width: 9px;
                 height: 9px;
                 opacity: .4;
-                border-radius: 2px;
                 top: 94px;
                 right: 624px;
-                transform: rotate(-17deg);
+                background: c.$purple;
             }
             &-2{
                 width: 9px;
                 height: 9px;
                 opacity: .4;
-                border-radius: 2px;
                 top: 94px;
                 right: 624px;
-                transform: rotate(-17deg);
+                background: c.$pink;
             }
             &-1{
                 width: 20px;
                 height: 20px;
-                opacity: .4;
-                border-radius: 6px;
+                opacity: .5;
                 top: 90px;
                 right: 159px;
-                transform: rotate(51deg);
+                background: c.$green;
             }
         }
     }

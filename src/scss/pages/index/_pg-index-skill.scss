@@ -4,7 +4,7 @@
 
 .pg-index-skill{
     @include m.flexbox(space-between,stretch,wrap);
-    margin-bottom: 120px;
+    padding-bottom: 120px;
     .skill-card{
         width: 30%;
         padding: 30px;

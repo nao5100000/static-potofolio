@@ -4,8 +4,27 @@
 
 
 .l-footer{
+    position: relative;
     background-color: c.$dark-gray;
-    height: 200px;
+    padding: 120px 0 90px;
+    overflow: hidden;
+    &__circle{
+        content: "";
+        display: block;
+        background: white;
+        width: 120vw;
+        height: 300px;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%,-50%);
+        box-shadow: var(--bs-normal03);
+    }
+    &__inner{
+        width: 90%;
+        margin: 0 auto;
+    }
     &__icon{
         display: block;
         width: 30px;
