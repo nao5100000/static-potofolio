@@ -10,15 +10,19 @@
 //Component
 @use "object/component/c-all-link";
 @use "object/component/c-top-button";
+@use "object/component/c-button";
 
 //Project
 
 
 //Utility
 @use "object/utility/u-width-960";
+@use "object/utility/u-width-1200";
 
 
 //Pages
 @use "pages/index/pg-index-main";
+@use "pages/index/pg-index-skill";
+@use "pages/index/pg-index-about";
 @use "pages/index/pg-index-works";
 @use "pages/index/pg-index-horizontal";

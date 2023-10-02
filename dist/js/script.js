@@ -35,7 +35,32 @@ try {
 var menuBtn = document.getElementById('js-menu-toggle');
 var gnav = document.getElementById('js-global-menu');
 var body = document.querySelector('body');
-var scrollValue; // Internal link
+var scrollValue;
+var nav = document.getElementById('js-nav');
+var hamBg = document.getElementById('js-ham-bg');
+var ham = document.getElementById('js-ham');
+var topButton = document.getElementById('js-top-button');
+ham.addEventListener('click', function () {
+  hamBg.classList.contains('is_active') ? hamBg.classList.remove('is_active') : hamBg.classList.add('is_active');
+  nav.classList.contains('is_active') ? nav.classList.remove('is_active') : nav.classList.add('is_active');
+  ham.classList.contains('is_open') ? ham.classList.remove('is_open') : ham.classList.add('is_open');
+});
+window.addEventListener('scroll', function () {
+  y = window.scrollY;
+
+  if (500 <= y) {
+    ham.classList.add('is_active');
+    nav.classList.add('is_hidden');
+    if (!ham.classList.contains('is_open')) nav.classList.remove('is_active');
+  } else {
+    ham.classList.remove('is_active');
+    ham.classList.remove('is_open');
+    nav.classList.remove('is_hidden');
+    if (hamBg.classList.contains('is_active')) hamBg.classList.remove('is_active');
+  }
+
+  if (y <= 90) topButton.style.transform = "translate(0,".concat(90 - y, "px)");
+}); // Internal link
 
 var menus = document.querySelectorAll('.global__menu > ul > li > a');
 menus.forEach(function (menu) {
@@ -67,78 +92,70 @@ var topParticle = function topParticle() {
     num02 = y / 1000;
     num03 = y / 10;
     particleW.style.cssText = "\n            opacity: ".concat(1 - num, ";\n            transform: scale3d( ").concat(1.5 + num02, ", ").concat(1.5 + num02, ", 1);\n        ");
-
-    if (.5 >= particleW.style.opacity) {
-      particleW.style.opacity = .5;
-    }
-
-    if (1.5 + num02 >= 2) {
-      particleW.style.transform = 'scale3d(2, 2, 1)';
-    }
-
+    if (.5 >= particleW.style.opacity) particleW.style.opacity = .5;
+    if (1.5 + num02 >= 2) particleW.style.transform = 'scale3d(2, 2, 1)';
     horizontal[0].style.transform = "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -".concat(num03, ", 0, 0, 1)");
     horizontal[1].style.transform = "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, ".concat(num03, ", 0, 0, 1)");
   });
 };
 
 topParticle();
-var ham = document.getElementById('js-ham');
-window.addEventListener('scroll', function () {
-  y = window.scrollY;
-
-  if (500 <= y) {
-    ham.classList.add('is_active');
-  } else {
-    ham.classList.remove('is_active');
-  }
-});
 
 var mouseHover = function mouseHover() {
   var pointerArea = document.querySelectorAll('.js-hover');
   var pointerElem = document.getElementById('js-pointer');
-  var pointerHov = document.querySelectorAll('.js-hov-res');
-
-  if (pointerArea.length === 0) {
-    return;
-  }
-
-  var _loop = function _loop(i) {
-    pointerArea[i].addEventListener('mouseenter', function () {
-      pointerElem.classList.add('is_active');
-      pointerHov[i].classList.add('is_active');
-    });
-    pointerArea[i].addEventListener('mouseleave', function () {
-      pointerElem.classList.remove('is_active');
-      pointerHov[i].classList.remove('is_active');
-    });
-    pointerArea[i].addEventListener('mousemove', function (e) {
-      pointerElem.style.top = "".concat(e.clientY, "px");
-      pointerElem.style.left = "".concat(e.clientX, "px");
-      pointerHov[i].style.top = "".concat(e.clientY, "px");
-      pointerHov[i].style.left = "".concat(e.clientX, "px");
-    });
-  };
+  document.addEventListener('mousemove', function (e) {
+    pointerElem.style.top = "".concat(e.clientY - 45, "px");
+    pointerElem.style.left = "".concat(e.clientX - 35, "px");
+  });
+  if (pointerArea.length === 0) return;
 
   for (var i = 0; i < pointerArea.length; i++) {
-    _loop(i);
+    pointerArea[i].addEventListener('mouseover', function () {
+      pointerElem.classList.add('is_active');
+    });
+    pointerArea[i].addEventListener('mouseout', function () {
+      pointerElem.classList.remove('is_active');
+    });
   }
 };
 
 mouseHover(); // mouse 
 
 var toX, toY, elemData;
+var elemDataArray = [];
 
 var buttonSticerAddEvent = function buttonSticerAddEvent(trigger, target, num) {
   trigger.addEventListener("mouseenter", function (e) {
-    elemData = target.getBoundingClientRect();
+    if (target.length >= 2) {
+      Array.from(target).map(function (t) {
+        elemDataArray.push(t.getBoundingClientRect());
+      });
+    } else {
+      elemData = target.getBoundingClientRect();
+    }
   });
   trigger.addEventListener('mousemove', function (e) {
-    toX = (e.clientX - elemData.width / 2 - elemData.left) * num;
-    toY = (e.clientY - elemData.height / 2 - elemData.top) * num;
-    target.style.transform = "translate(".concat(toX, "px, ").concat(toY, "px)");
+    if (target.length >= 2) {
+      Array.from(target).map(function (t, i) {
+        toX = (e.clientX - elemDataArray[i].width / 2 - elemDataArray[i].left) * num;
+        toY = (e.clientY - elemDataArray[i].height / 2 - elemDataArray[i].top) * num;
+        t.style.transform = "translate(".concat(toX, "px, ").concat(toY, "px)");
+      });
+    } else {
+      toX = (e.clientX - elemData.width / 2 - elemData.left) * num;
+      toY = (e.clientY - elemData.height / 2 - elemData.top) * num;
+      target.style.transform = "translate(".concat(toX, "px, ").concat(toY, "px)");
+    }
   });
   trigger.addEventListener('mouseleave', function () {
-    target.style.transform = "translate(0px,0px)";
+    if (target.length >= 2) {
+      Array.from(target).map(function (t) {
+        t.style.transform = "translate(0px,0px)";
+      });
+    } else {
+      target.style.transform = "translate(0px,0px)";
+    }
   });
 };
 
@@ -164,6 +181,42 @@ var topParticleSticker = function topParticleSticker() {
 };
 
 topParticleSticker();
+gsap.utils.toArray('.js-parallax').forEach(function (wrap) {
+  var y = wrap.getAttribute('data-y') || -100;
+  gsap.to(wrap, {
+    y: y,
+    scrollTrigger: {
+      trigger: wrap,
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 0.5
+    }
+  });
+});
+
+var gsapFadeIn = function gsapFadeIn(target, y, o, time) {
+  gsap.set(target, {
+    y: y,
+    opacity: o
+  });
+
+  for (var i = 0; i < target.length; i++) {
+    gsap.to(target[i], {
+      y: 0,
+      opacity: 1,
+      duration: time,
+      scrollTrigger: {
+        trigger: target[i],
+        start: 'top 70%'
+      }
+    });
+  }
+};
+
+var gsapFadeInTarget = document.querySelectorAll('.js-fadeIn .line_inner');
+var gsapFadeInOpacity = document.querySelectorAll('.js-fadeIn-opacity');
+gsapFadeIn(gsapFadeInTarget, 40, 1, 1.5);
+gsapFadeIn(gsapFadeInOpacity, 60, 0, 2);
 var bodyHeight = document.body.clientHeight;
 var windowHeight = window.innerHeight;
 var bottomPoint = bodyHeight - windowHeight;

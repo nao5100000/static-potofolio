@@ -17,6 +17,32 @@ const gnav = document.getElementById('js-global-menu');
 const body = document.querySelector('body');
 let scrollValue;
 
+const nav = document.getElementById('js-nav');
+
+const hamBg = document.getElementById('js-ham-bg');
+const ham = document.getElementById('js-ham');
+const topButton = document.getElementById('js-top-button');
+ham.addEventListener('click', () => {
+    hamBg.classList.contains('is_active') ? hamBg.classList.remove('is_active') : hamBg.classList.add('is_active')
+    nav.classList.contains('is_active') ? nav.classList.remove('is_active') : nav.classList.add('is_active')
+    ham.classList.contains('is_open') ? ham.classList.remove('is_open') : ham.classList.add('is_open')
+})
+
+window.addEventListener('scroll', () => {
+    y = window.scrollY;
+    if (500 <= y) {
+        ham.classList.add('is_active');
+        nav.classList.add('is_hidden');
+        if (!(ham.classList.contains('is_open'))) nav.classList.remove('is_active');
+    } else {
+        ham.classList.remove('is_active')
+        ham.classList.remove('is_open');
+        nav.classList.remove('is_hidden');
+        if (hamBg.classList.contains('is_active')) hamBg.classList.remove('is_active');
+    }
+    if (y <= 90) topButton.style.transform = `translate(0,${90 - y}px)`
+
+})
 
 // Internal link
 const menus = document.querySelectorAll('.global__menu > ul > li > a');
@@ -55,12 +81,8 @@ const topParticle = () => {
             opacity: ${1 - num};
             transform: scale3d( ${1.5 + num02}, ${1.5 + num02}, 1);
         `
-        if (.5 >= particleW.style.opacity) {
-            particleW.style.opacity = .5;
-        }
-        if (1.5 + num02 >= 2) {
-            particleW.style.transform = 'scale3d(2, 2, 1)';
-        }
+        if (.5 >= particleW.style.opacity) particleW.style.opacity = .5;
+        if (1.5 + num02 >= 2) particleW.style.transform = 'scale3d(2, 2, 1)';
 
         horizontal[0].style.transform = `matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -${num03}, 0, 0, 1)`;
         horizontal[1].style.transform = `matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, ${num03}, 0, 0, 1)`;
@@ -68,37 +90,22 @@ const topParticle = () => {
 }
 topParticle();
 
-const ham = document.getElementById('js-ham');
-window.addEventListener('scroll',()=>{
-    y = window.scrollY;
-    if(500 <= y){
-        ham.classList.add('is_active');
-    }else{
-        ham.classList.remove('is_active');
-    }
-})
+
 
 const mouseHover = () => {
     const pointerArea = document.querySelectorAll('.js-hover');
     const pointerElem = document.getElementById('js-pointer');
-    const pointerHov = document.querySelectorAll('.js-hov-res');
-    if (pointerArea.length === 0) {
-        return;
-    }
+    document.addEventListener('mousemove', (e) => {
+        pointerElem.style.top = `${e.clientY - 45}px`;
+        pointerElem.style.left = `${e.clientX - 35}px`;
+    })
+    if (pointerArea.length === 0) return;
     for (let i = 0; i < pointerArea.length; i++) {
-        pointerArea[i].addEventListener('mouseenter', () => {
+        pointerArea[i].addEventListener('mouseover', () => {
             pointerElem.classList.add('is_active');
-            pointerHov[i].classList.add('is_active');
         })
-        pointerArea[i].addEventListener('mouseleave', () => {
+        pointerArea[i].addEventListener('mouseout', () => {
             pointerElem.classList.remove('is_active');
-            pointerHov[i].classList.remove('is_active');
-        })
-        pointerArea[i].addEventListener('mousemove', (e) => {
-            pointerElem.style.top = `${e.clientY}px`;
-            pointerElem.style.left = `${e.clientX}px`;
-            pointerHov[i].style.top = `${e.clientY}px`;
-            pointerHov[i].style.left = `${e.clientX}px`;
         })
     }
 }
@@ -107,25 +114,45 @@ mouseHover();
 
 // mouse 
 let toX, toY, elemData;
-const buttonSticerAddEvent =(trigger,target,num)=>{
+var elemDataArray = [];
+const buttonSticerAddEvent = (trigger, target, num) => {
     trigger.addEventListener("mouseenter", e => {
-        elemData = target.getBoundingClientRect();
+        if (target.length >= 2) {
+            Array.from(target).map((t) => {
+                elemDataArray.push(t.getBoundingClientRect());
+            })
+        } else {
+            elemData = target.getBoundingClientRect();
+        }
     })
     trigger.addEventListener('mousemove', e => {
-        toX = ((e.clientX - (elemData.width / 2)) - elemData.left) * num;
-        toY = ((e.clientY - (elemData.height / 2)) - elemData.top) * num;
-
-        target.style.transform = `translate(${toX}px, ${toY}px)`;
+        if (target.length >= 2) {
+            Array.from(target).map((t, i) => {
+                toX = ((e.clientX - (elemDataArray[i].width / 2)) - elemDataArray[i].left) * num;
+                toY = ((e.clientY - (elemDataArray[i].height / 2)) - elemDataArray[i].top) * num;
+                t.style.transform = `translate(${toX}px, ${toY}px)`;
+            })
+        } else {
+            toX = ((e.clientX - (elemData.width / 2)) - elemData.left) * num;
+            toY = ((e.clientY - (elemData.height / 2)) - elemData.top) * num;
+            target.style.transform = `translate(${toX}px, ${toY}px)`;
+        }
     })
 
     trigger.addEventListener('mouseleave', () => {
-        target.style.transform = `translate(0px,0px)`;
+        if (target.length >= 2) {
+            Array.from(target).map((t) => {
+                t.style.transform = `translate(0px,0px)`;
+            })
+        } else {
+            target.style.transform = `translate(0px,0px)`;
+        }
     })
 }
 const buttonHovSticker = () => {
     const hovLink = document.querySelectorAll('.js-stick-link');
     Array.from(hovLink).map((item) => {
-        buttonSticerAddEvent(item,item,.5);
+        buttonSticerAddEvent(item, item, .5);
     })
 }
 buttonHovSticker();
@@ -133,16 +160,50 @@ buttonHovSticker();
 
 const frontParticles = document.querySelectorAll('.particle-front');
 const backParticles = document.querySelectorAll('.particle-back');
-const topParticleSticker =()=>{
-    buttonSticerAddEvent(particleW,particles);
+const topParticleSticker = () => {
+    buttonSticerAddEvent(particleW, particles);
     Array.from(frontParticles).map((frontParticle) => {
-        buttonSticerAddEvent(particleW,frontParticle,.04);
+        buttonSticerAddEvent(particleW, frontParticle, .04);
     })
     Array.from(backParticles).map((backParticle) => {
-        buttonSticerAddEvent(particleW,backParticle,.03);
+        buttonSticerAddEvent(particleW, backParticle, .03);
     })
-}
+};
 topParticleSticker();
+
+gsap.utils.toArray('.js-parallax').forEach(wrap => {
+    const y = wrap.getAttribute('data-y') || -100;
+    gsap.to(wrap, {
+        y: y,
+        scrollTrigger: {
+            trigger: wrap,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 0.5,
+        }
+    })
+});
+
+
+const gsapFadeIn = (target, y, o, time) => {
+    gsap.set(target, { y: y, opacity: o });
+    for (let i = 0; i < target.length; i++) {
+        gsap.to(target[i], {
+            y: 0,
+            opacity: 1,
+            duration: time,
+            scrollTrigger: {
+                trigger: target[i],
+                start: 'top 70%',
+            }
+        })
+    }
+}
+const gsapFadeInTarget = document.querySelectorAll('.js-fadeIn .line_inner');
+const gsapFadeInOpacity = document.querySelectorAll('.js-fadeIn-opacity');
+gsapFadeIn(gsapFadeInTarget, 40, 1, 1.5);
+gsapFadeIn(gsapFadeInOpacity, 60, 0, 2);
+
 
 
 const bodyHeight = document.body.clientHeight;
@@ -150,10 +211,12 @@ const windowHeight = window.innerHeight;
 const bottomPoint = bodyHeight - windowHeight;
 document.addEventListener('scroll', () => {
     let currentPos = window.scrollY;
-    if(bottomPoint <= currentPos){
+    if (bottomPoint <= currentPos) {
         console.log('true')
-    }else{
+    } else {
         console.log('false')
     }
 })
+
+
 

@@ -1,0 +1,30 @@
+@use "../../foundation/color" as c;
+@use "../../foundation/font" as f;
+@use "../../foundation/mixin" as m;
+
+.pg-index-skill{
+    @include m.flexbox(space-between,stretch,wrap);
+    margin-bottom: 120px;
+    .skill-card{
+        width: 30%;
+        padding: 30px;
+        box-shadow: var(--bs-normal03);
+        border-radius: var(--br);
+        dt{
+            font-size: clamp(1.1rem,3vw,1.35rem);
+            font-weight: 500;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            span{
+                display: block;
+                font-size: clamp(1.5rem,3vw,2.3rem);
+            }
+        }
+        dd{
+            font-weight: var(--fw-light);
+            font-size: clamp(.8rem,3vw,.95rem);
+            text-align: left;
+        }
+    }
+}

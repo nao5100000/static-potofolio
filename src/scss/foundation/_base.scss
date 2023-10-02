@@ -9,14 +9,17 @@
     --maxW: 1200; /* viewport width at the max font size */
     --fz-normal: clamp(.8rem,3vw,1rem);
     --fz-bigger: calc(2rem,3vw,5rem);
+    --fw-bolder:800;
     --fw-bold:700;
     --fw-regular:400;
     --fw-light:300;
     --bs-normal:4px 4px 11px rgba(0,0,0,.1);
+    --bs-normal02:-6px 4px 15px -8px #d4d4d4;
+    --bs-normal03:0 9px 30px rgba(0, 0, 0, .1);
     --br:20px;
 
     --cb01:cubic-bezier(.24,.45,.32,1);
-    --cb02:cubic-bezier(0.36, 0, 0.66, 0)
+    --cb02:cubic-bezier(0.36, 0, 0.66, 0);
 }
 
 *, *:before, *:after {
@@ -39,21 +42,21 @@ body {
     -webkit-text-size-adjust: 100%; // Fix text bug for iOS Safari
     width: 100%;
     background-color: white;
-    color: black;
+    color: #474747;
     font-family: f.$font-inter;
     line-height: 1.8;
     letter-spacing: 0.1rem;
-    font-weight: 400;
+    font-weight: var(--fw-regular);
+    font-size: var(--fz-light);
     text-align: center;
     overflow-x: hidden;
     margin: 0;
-    font-size: var(--fz-normal);
 }
 
 
 
 a {
-    color: black;
+    color: #474747;
     text-decoration: none;
     cursor: pointer;
     &:hover {

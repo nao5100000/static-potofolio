@@ -3,3 +3,14 @@
 @use "../foundation/mixin" as m;
 
 
+.l-footer{
+    background-color: c.$dark-gray;
+    height: 200px;
+    &__icon{
+        display: block;
+        width: 30px;
+        img{
+            width: 100%;
+        }
+    }
+}

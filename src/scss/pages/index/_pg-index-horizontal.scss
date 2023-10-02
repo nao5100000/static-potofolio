@@ -4,6 +4,7 @@
 
 .pg-index-horizontal{
     overflow: hidden;
+    padding-bottom: 90px;
     .hor-wrapper{
         width: 120vw;
         left: -10vw;
@@ -17,6 +18,10 @@
         &__card{
             width: 25%;
             padding: 1.25vw;
+            .img_wrapper{
+                background: c.$gray;
+                padding: 2vw;
+            }
             img{
                 width: 100%;
             }
