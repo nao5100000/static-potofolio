@@ -334,3 +334,9 @@ document.addEventListener('scroll', function () {
     console.log('false');
   }
 });
+topButton.addEventListener('click', function () {
+  window.scroll({
+    top: 0,
+    behavior: "smooth"
+  });
+});

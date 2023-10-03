@@ -317,5 +317,9 @@ document.addEventListener('scroll', () => {
     }
 })
 
+topButton.addEventListener('click',()=>{
+    window.scroll({ top: 0, behavior: "smooth" });
+})
+
 
 
