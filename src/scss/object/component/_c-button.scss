@@ -31,13 +31,13 @@
             height: 1px;
             width: 20px;
             right: 30px;
-            background: #474747;
+            background: var(--font-color);
         }
         &::after{
             width: 10px;
             height: 10px;
-            border-top: 1px solid #474747;
-            border-right: 1px solid #474747;
+            border-top: 1px solid var(--font-color);
+            border-right: 1px solid var(--font-color);
             right: 30px;
             transform: translateY(-50%) rotate(45deg);
         }

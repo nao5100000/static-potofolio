@@ -259,6 +259,69 @@ gsapFooter('.pg-index-horizontal');
 mm.add("(max-width: 1024px)", function () {
   gsapFooter('.pg-index-works');
 });
+
+var applyTheme = function applyTheme(themeName) {
+  sessionStorage.setItem('theme', themeName);
+  document.documentElement.className = themeName;
+};
+
+var applyVisited = function applyVisited(status) {
+  status = '';
+  sessionStorage.setItem('status', status);
+};
+
+var initialTheme = function initialTheme() {
+  var prefersColorSchemeDark = matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (prefersColorSchemeDark) {
+    applyTheme('is-theme-dark');
+  } else {
+    applyTheme('is-theme-light');
+  }
+};
+
+var getStorageTheme = function getStorageTheme() {
+  var storageTheme = sessionStorage.getItem("theme");
+
+  if (storageTheme === "is-theme-dark") {
+    applyTheme("is-theme-dark");
+  } else if (storageTheme === "is-theme-light") {
+    applyTheme("is-theme-light");
+  }
+};
+
+var discriminationTheme = function discriminationTheme() {
+  var getStrageVisited = sessionStorage.getItem('status');
+
+  if (getStrageVisited) {
+    getStorageTheme();
+  } else {
+    initialTheme();
+    applyVisited('visted');
+  }
+};
+
+var switchToggle = document.getElementById('js-toggle');
+var switchToggleInput = document.querySelector('#js-toggle input');
+var storageTheme = sessionStorage.getItem("theme");
+
+window.onload = function () {
+  if (storageTheme !== "is-theme-dark") {
+    switchToggleInput.checked = false;
+    applyTheme("is-theme-light");
+  } else {
+    switchToggleInput.checked = true;
+    applyTheme("is-theme-dark");
+  }
+};
+
+switchToggle.addEventListener('change', function () {
+  if (switchToggleInput.checked === true) {
+    applyTheme("is-theme-dark");
+  } else {
+    applyTheme("is-theme-light");
+  }
+});
 var bodyHeight = document.body.clientHeight;
 var windowHeight = window.innerHeight;
 var bottomPoint = bodyHeight - windowHeight;

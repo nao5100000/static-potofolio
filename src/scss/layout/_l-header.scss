@@ -114,7 +114,7 @@
                     &::after{
                         content: "";
                         display: block;
-                        background: #000;
+                        background: var(--font-color);
                         width: 0px;
                         height: 0px;
                         border-radius: 50%;
@@ -147,14 +147,13 @@
     &__toggle{
         position: relative;
         margin-left: 40px;
-        background: white;
+        background: var(--base-color);
         border-radius: 30px;
         border: 2px solid c.$green;
         @include m.flexbox(center,center,nowrap);
         width: 70px;
         height: 34px;
         cursor: pointer;
-        opacity: .7;
         &:has(:checked){
             border: 2px solid c.$purple;
             &::after{
@@ -266,7 +265,7 @@
         height: 120vh;
         width: 0;
         display: block;
-        background: white;
+        background: var(--base-color);
         box-shadow: var(--bs-normal03);
         border-radius: 50%;
         position: fixed;

@@ -46,17 +46,17 @@ window.addEventListener('scroll', () => {
 })
 
 let windowW;
-const responsiveHam = () =>{
+const responsiveHam = () => {
     windowW = window.innerWidth;
-    if(windowW <= 480){
+    if (windowW <= 480) {
         ham.classList.add('is_active');
         nav.classList.add('is_hidden');
-    }else{
+    } else {
         ham.classList.remove('is_active');
         nav.classList.remove('is_hidden');
     }
 }
-window.addEventListener('resize',()=>{
+window.addEventListener('resize', () => {
     responsiveHam()
 })
 responsiveHam()
@@ -227,12 +227,12 @@ gsapFadeIn(gsapFadeInOpacity, 60, 0, 2);
 let mm = gsap.matchMedia();
 const footer = document.querySelector('footer');
 const footerCircle = document.getElementById('js-footer-circle');
-const gsapFooter =(trigger)=>{
+const gsapFooter = (trigger) => {
     gsap.to(footerCircle, {
         scaleY: 0,
         ease: 'Power1.easeOut',
         scrollTrigger: {
-            trigger: trigger, 
+            trigger: trigger,
             start: 'top top',
             end: () => innerHeight + ' top',
             scrub: true,
@@ -243,6 +243,67 @@ gsapFooter('.pg-index-horizontal')
 mm.add("(max-width: 1024px)", () => {
     gsapFooter('.pg-index-works')
 });
+
+
+const applyTheme = (themeName) => {
+    sessionStorage.setItem('theme', themeName);
+    document.documentElement.className = themeName;
+};
+
+const applyVisited = (status) => {
+    status = '';
+    sessionStorage.setItem('status', status);
+};
+
+const initialTheme = () => {
+    const prefersColorSchemeDark = matchMedia(
+        '(prefers-color-scheme: dark)'
+    ).matches;
+    if (prefersColorSchemeDark) {
+        applyTheme('is-theme-dark');
+    } else {
+        applyTheme('is-theme-light');
+    }
+}
+
+const getStorageTheme = () => {
+    const storageTheme = sessionStorage.getItem("theme");
+    if (storageTheme === "is-theme-dark") {
+        applyTheme("is-theme-dark");
+    } else if (storageTheme === "is-theme-light") {
+        applyTheme("is-theme-light");
+    }
+};
+
+const discriminationTheme = () => {
+    const getStrageVisited = sessionStorage.getItem('status');
+    if (getStrageVisited) {
+        getStorageTheme();
+    } else {
+        initialTheme();
+        applyVisited('visted');
+    }
+};
+
+const switchToggle = document.getElementById('js-toggle');
+const switchToggleInput = document.querySelector('#js-toggle input');
+const storageTheme = sessionStorage.getItem("theme");
+window.onload = () => {
+    if (storageTheme !== "is-theme-dark") {
+        switchToggleInput.checked = false;
+        applyTheme("is-theme-light");
+    } else {
+        switchToggleInput.checked = true;
+        applyTheme("is-theme-dark");
+    }
+}
+switchToggle.addEventListener('change', () => {
+    if (switchToggleInput.checked === true) {
+        applyTheme("is-theme-dark");
+    } else {
+        applyTheme("is-theme-light");
+    }
+})
 
 const bodyHeight = document.body.clientHeight;
 const windowHeight = window.innerHeight;
