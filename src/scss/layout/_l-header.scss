@@ -13,11 +13,13 @@
         &.is_hidden{
             transform: none;
             width: clamp(250px,35vw,325px);
-            right: -50%;
+            right: -84%;
             top: 20vh;
             left: initial;
             display: block;
             position: fixed;
+            transition: right .5s ease;
+            z-index: 800;
             .l-header__nav{
                 display: block;
                 ul{
@@ -28,8 +30,24 @@
                         text-align: left;
                         font-size: clamp(1.1rem,3vw,1.3rem);
                         margin-bottom: 24px;
+                        &:nth-of-type(2){
+                            transition-delay: .03s;
+                        }
+                        &:nth-of-type(3){
+                            transition-delay: .06s;
+                        }
+                        &:nth-of-type(4){
+                            transition-delay: .09s;
+                        }
+                        &:nth-of-type(5){
+                            transition-delay: .12s;
+                        }
                         &.only-sp{
                             display: block;
+                        }
+                        span{
+                            display: block;
+                            margin-right: 10px;
                         }
                         a{
                             @include m.flexbox(flex-start,center,nowrap);
@@ -84,17 +102,8 @@
             li{
                 will-change: transform;
                 margin: 0 10px;
-                &:nth-of-type(2){
-                    transition-delay: .03s;
-                }
-                &:nth-of-type(3){
-                    transition-delay: .06s;
-                }
-                &:nth-of-type(4){
-                    transition-delay: .09s;
-                }
-                &:nth-of-type(5){
-                    transition-delay: .12s;
+                span{
+                    display: none;
                 }
                 a{
                     position: relative;
@@ -264,10 +273,10 @@
         right: 0;
         transform: translateX(50%);
         transition: all .6s cubic-bezier(.7, 0, .2, 1);
-        z-index: 500;
+        z-index: 600;
         &.is_active{
             border-radius:  0;
-            width: clamp(500px,70vw,750px);
+            width: clamp(500px,80vw,750px);
         }
     }
 }

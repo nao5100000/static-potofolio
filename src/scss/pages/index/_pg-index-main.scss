@@ -11,7 +11,9 @@
         font-size: clamp(2.5rem,5.5vw,4rem);
         display: inline-block;
         -webkit-text-fill-color: transparent;
-        background-image: linear-gradient(-225deg, c.$green 0%, c.$purple 56%, c.$pink 100%);
+        background-image: linear-gradient(-225deg, c.$green 0%, c.$purple 56%, c.$pink 100%,#ee7752);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
         -webkit-background-clip: text;
         font-weight: var(--fw-bolder);
         position: absolute;
@@ -20,6 +22,17 @@
         transform: translate(-50%,-50%);
         text-align: center;
         z-index: 500;
+        @keyframes gradient {
+            0%{
+                background-position: 0% 50%;
+            }
+            50%{
+                background-position: 100% 50%;
+            }
+            0%{
+                background-position: 0% 50%;
+            }
+        }
     }
     .scroll-border{
         height: 150px;
@@ -27,9 +40,12 @@
         position: absolute;
         bottom: 0;
         right: 5%;
-        transform: translateX(-50%);
+        transform: translateX(50%);
         text-align: left;
         font-size: .8rem;
+        @include m.mq(sp_min){
+            right: 50%;
+        }
         &::before{
             content: "";
             display: block;
@@ -70,6 +86,12 @@
         opacity: 1;
         transform: translate3d(0px, 0px, 0px) scale3d(1.5, 1.5, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
         transform-style: preserve-3d;
+        @include m.mq(sp_min){
+            width: 50vw;
+            height: 50vw;
+            top: calc(50% - 25vw);
+            left: calc(50% - 25vw);
+        }
         .particle{
             position: absolute;
             background-color: c.$dark-gray;

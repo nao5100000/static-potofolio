@@ -6,6 +6,9 @@
     @include m.flexbox(space-between,stretch,wrap);
     gap: calc(100vw * 0.06) 0;
     padding-bottom: 90px;
+    @include m.mq(sp_min){
+        gap: 48px 0;
+    }
     &__pointer{
         cursor: none;
         position: fixed;
@@ -31,6 +34,9 @@
     .works-card{
         width: 47%;
         cursor: none;
+        @include m.mq(sp_min){
+            width: 100%;
+        }
         &:hover{
             .works-card__wrapper{
                 box-shadow: var(--bs-normal03);

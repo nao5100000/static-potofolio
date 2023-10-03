@@ -46,16 +46,46 @@
         }
     </script>
 </head>
-<body>
+<body ontouchstart="">
 <header class="l-header">
     <div class="l-header__wrapper" id="js-nav">
         <nav class="l-header__nav">
             <ul>
-                <li class="only-sp"><a href="" class="link js-stick-link"><i class="fa-solid fa-house"></i>Home</a></li>
-                <li><a href="" class="js-stick-link"><i class="fa-solid fa-person"></i>About</a></li>
-                <li><a href="" class="js-stick-link"><i class="fa-regular fa-lightbulb"></i>Work</a></li>
-                <li><a href="" class="js-stick-link"><i class="fa-regular fa-address-card"></i>Resume</a></li>
-                <li class="only-sp"><a href="" class="js-stick-link"><i class="fa-regular fa-paper-plane"></i>Contact</a></li>
+                <li class="only-sp">
+                    <a href="" class="link js-stick-link">
+                        <!-- <i class="fa-solid fa-house"></i> -->
+                        <span>🏠</span>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="js-stick-link">
+                        <!-- <i class="fa-solid fa-person"></i> -->
+                        <span>👩‍💻</span>
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="js-stick-link">
+                        <!-- <i class="fa-regular fa-lightbulb"></i> -->
+                        <span>💡</span>
+                        Work
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="js-stick-link">
+                        <!-- <i class="fa-regular fa-address-card"></i> -->
+                        <span>📄</span>
+                        Resume
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="js-stick-link">
+                        <!-- <i class="fa-regular fa-paper-plane"></i> -->
+                        <span>📮</span>
+                        Contact
+                    </a>
+                </li>
             </ul>
         </nav>
         <label class="l-header__toggle">
@@ -256,5 +286,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- common -->
     <script type="text/javascript" src="/js/script.min.js"></script>
+    <script>document.addEventListener('touchstart',function(){});</script>
 </body>
 </html>

@@ -7,6 +7,9 @@
     padding-bottom: 90px;
     position: relative;
     z-index: 50;
+    @include m.mq(sp_min){
+        display: none;
+    }
     .hor-wrapper{
         width: 120vw;
         left: -10vw;
