@@ -79,7 +79,8 @@
                 }
             }
             .l-header__toggle{
-                display: none;
+                margin-left: 0;
+                margin-top: 50px;
             }
             &.is_active{
                 right: 0;
