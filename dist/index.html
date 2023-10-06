@@ -3,15 +3,15 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>(各ページ毎のタイトル)</title>
+    <title>My Portofolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta name="description" content="(各ページ毎の説明)">
+    <meta name="description" content="This pagr is My Portofolio">
     <meta name="keywords" content="">
     <!-- ogp -->
-    <meta property="og:title" content="(各ページ毎のタイトル)" />
+    <meta property="og:title" content="My Portofolio" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/images/common/opg-img.jpg" />
-    <meta property="og:description" content="(各ページ毎の説明)" />
+    <meta property="og:description" content="This pagr is My Portofolio" />
     <meta name="twitter:card" content="Summary with Large Image" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="ROBOTS" content="NOODP" />
@@ -22,29 +22,11 @@
     <link rel="prefetch" href="/js/script.min.js">
     <!-- css -->
     <link rel="stylesheet" href="/css/style.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/images/common/favicon16×16.ico">
     <link rel="shortcut icon" type="image/x-icon" href="/images/common/favicon32×32.ico">
     <link rel="shortcut icon" type="image/x-icon" href="/images/common/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/common/apple-touch-icon.png">
-    <script type="application/id+json">
-        {
-            "@context" : "http://schema.org",
-            "@type" : "Corporation",
-            "name" : "Company Name",
-            "url" : "https://example.com/",
-            "logo" : "https://example.com/images/common/logo.svg",
-            "telephone" : "053-000-0000",
-            "address" : "{
-                "@type" : "PostalAddress",
-                "postalCode" : "000-0000",
-                "addressRegion" : "静岡県",
-                "addressLocality" : "",
-                "streetAddress" : ""
-            }"
-        }
-    </script>
 </head>
 <body ontouchstart="">
 <header class="l-header">
@@ -73,7 +55,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="js-stick-link">
+                    <a href="/images/index/resume.pdf" class="js-stick-link" target="_blank" rel="noopener">
                         <!-- <i class="fa-regular fa-address-card"></i> -->
                         <span>📄</span>
                         Resume
@@ -102,8 +84,8 @@
 </div>
         <main id="js-main">
             <section class="pg-index-main">
-                <h1 class="u-width-960">Hi! I'm Nao.<br>
-                I build things for the web</h1>
+                <h1 class="u-width-960" id="js-title">Hi! I'm Nao.<br>
+                I build things <br class="u-br-sp">for the web</h1>
                 <div class="particle-wrapper" id="js-particle-wrapper">
                     <div class="particle particle-front particle-8"></div>
                     <div class="particle particle-back particle-7"></div>
@@ -267,6 +249,10 @@
                     <span>View work</span>
                 </a>
             </section>
+            <div class="c-loading" id="js-loading">
+                <p class="en"><span>H</span><span>E</span><span>L</span><span>L</span><span>O</span><span>!</span></p>
+                <p class="jp"><span>こ</span><span>ん</span><span>に</span><span>ち</span><span>は</span><span>！</span></p>
+            </div>
         </main>
 
     <footer id="js-footer" class="l-footer">
