@@ -340,3 +340,50 @@ topButton.addEventListener('click', function () {
     behavior: "smooth"
   });
 });
+var loadingWrapper = document.getElementById('js-loading');
+var loadingText = document.querySelectorAll('#js-loading .en span');
+var loadingTextJp = document.querySelectorAll('#js-loading .jp span');
+var title = document.getElementById('js-title');
+var tl = gsap.timeline();
+var visitStatus = sessionStorage.getItem('status');
+
+if (visitStatus === 'visited') {
+  loadingWrapper.style.display = "none";
+} else {
+  loadingWrapper.style.display = "block";
+  gsap.set(loadingText, {
+    y: 60
+  });
+  gsap.set(loadingTextJp, {
+    y: 60,
+    opacity: 0
+  });
+  gsap.set(title, {
+    y: 10,
+    opacity: 0
+  });
+  tl.to(loadingText, {
+    y: 0,
+    stagger: 0.05,
+    delay: 0.2,
+    duration: 0.5
+  }, 0).to(loadingText, {
+    y: -100,
+    stagger: 0.05,
+    duration: 0.5
+  }).to(loadingTextJp, {
+    opacity: 1,
+    y: 0,
+    stagger: 0.05,
+    duration: 0.5,
+    delay: -0.1
+  }).to(loadingWrapper, {
+    scaleY: 0,
+    duration: 1
+  }).to(title, {
+    opacity: 1,
+    y: 0,
+    duration: 0.9
+  });
+  sessionStorage.setItem('status', 'visited');
+}
