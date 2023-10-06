@@ -277,6 +277,9 @@
         &.is_active{
             border-radius:  0;
             width: clamp(500px,80vw,750px);
+            @include m.mq(sp_min){
+                width: 600px;
+            }
         }
     }
 }
