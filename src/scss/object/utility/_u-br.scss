@@ -1,0 +1,12 @@
+@use "../../foundation/color" as c;
+@use "../../foundation/font" as f;
+@use "../../foundation/mixin" as m;
+
+.u-br{
+    &-sp{
+        display: none;
+        @include m.mq(sp){
+            display: block;
+        }
+    }
+}
