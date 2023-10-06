@@ -21,29 +21,11 @@
     <link rel="prefetch" href="<%= path %>js/script.min.js">
     <!-- css -->
     <link rel="stylesheet" href="<%= path %>css/style.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="<%= path %>images/common/favicon16×16.ico">
     <link rel="shortcut icon" type="image/x-icon" href="<%= path %>images/common/favicon32×32.ico">
     <link rel="shortcut icon" type="image/x-icon" href="<%= path %>images/common/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="<%= path %>images/common/apple-touch-icon.png">
-    <script type="application/id+json">
-        {
-            "@context" : "http://schema.org",
-            "@type" : "Corporation",
-            "name" : "Company Name",
-            "url" : "https://example.com/",
-            "logo" : "https://example.com/images/common/logo.svg",
-            "telephone" : "053-000-0000",
-            "address" : "{
-                "@type" : "PostalAddress",
-                "postalCode" : "000-0000",
-                "addressRegion" : "静岡県",
-                "addressLocality" : "",
-                "streetAddress" : ""
-            }"
-        }
-    </script>
 </head>
 <body ontouchstart="">
 <header class="l-header">
@@ -72,7 +54,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="js-stick-link">
+                    <a href="<%= path %>images/index/resume.pdf" class="js-stick-link" target="_blank" rel="noopener">
                         <!-- <i class="fa-regular fa-address-card"></i> -->
                         <span>📄</span>
                         Resume
