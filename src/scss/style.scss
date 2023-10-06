@@ -11,6 +11,7 @@
 @use "object/component/c-all-link";
 @use "object/component/c-top-button";
 @use "object/component/c-button";
+@use "object/component/c-loading";
 
 //Project
 
@@ -18,6 +19,7 @@
 //Utility
 @use "object/utility/u-width-960";
 @use "object/utility/u-width-1200";
+@use "object/utility/u-br";
 
 
 //Pages

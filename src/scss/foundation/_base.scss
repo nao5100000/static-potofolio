@@ -8,7 +8,7 @@
     --minW: 375; /* viewport width at the minimum font size */
     --maxW: 1200; /* viewport width at the max font size */
     --fz-normal: clamp(.8rem,3vw,1rem);
-    --fz-bigger: calc(2rem,3vw,5rem);
+    --fz-bigger: clamp(2rem,3vw,5rem);
     --fw-bolder:800;
     --fw-bold:700;
     --fw-regular:400;
@@ -23,8 +23,7 @@
 :root,
 .is-theme-light {
     --base-color: white;
-    --primary-color: skyblue;
-    --secondary-color: mistyrose;
+    --base-reverse-color: #0F172A;
     --font-color: #474747;
     --sub-color: #eceff1;
     --bs-normal:4px 4px 11px rgba(0,0,0,.1);
@@ -32,8 +31,8 @@
 }
 .is-theme-dark {
     --base-color: #0F172A;
-    --primary-color: lightskyblue;
-    --secondary-color: lavenderblush;
+    --base-reverse-color: white;
+    --base-color: #0F172A;
     --font-color: whitesmoke;
     --sub-color: #1b2a4c;
     --bs-normal:4px 4px 11px rgba(0,0,0,.3);

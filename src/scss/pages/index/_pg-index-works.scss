@@ -25,6 +25,7 @@
         place-content: center;
         font-weight: var(--fw-light);
         font-size: .9rem;
+        box-shadow: var(--bs-normal);
         &.is_active{
             opacity: 1;
             width: 70px;

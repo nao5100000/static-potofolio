@@ -1,0 +1,52 @@
+@use "../../foundation/color" as c;
+@use "../../foundation/font" as f;
+@use "../../foundation/mixin" as m;
+
+.c-loading{
+    width: 180vw;
+    height: 180vh;
+    background: var(--base-reverse-color);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 999;
+    border-radius: 50%;
+    transform-origin: top;
+    box-shadow: var(--bs-normal03);
+    p{
+        letter-spacing: .2rem;
+        overflow: hidden;
+        line-height: 1em;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        span{
+            line-height: 1em;
+            display: inline-block;
+            -webkit-background-clip: text;
+            animation: gradient 15s ease infinite;
+            font-weight: var(--fw-bolder);
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(-225deg, c.$green 0%, c.$purple 56%, c.$pink 100%,#ee7752);
+            font-size: clamp(1.2rem,6vw,4rem);
+            &.jp{
+                font-weight: 800;
+                font-size: clamp(1rem,6vw,3.5rem);
+            }
+        }
+        @keyframes gradient {
+            0%{
+                background-position: 0% 50%;
+            }
+            50%{
+                background-position: 100% 50%;
+            }
+            0%{
+                background-position: 0% 50%;
+            }
+        }
+
+    }
+}
