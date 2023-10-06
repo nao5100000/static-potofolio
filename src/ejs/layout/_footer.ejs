@@ -1,16 +1,21 @@
 
     <footer id="js-footer" class="l-footer">
-        <p class="copyright"><small>Copyright© 2021 All Rights Reserved.</small></p>
+        <div class="l-footer__inner">
+            <a href="https://github.com/nao5100000" class="l-footer__icon" target="_blank" rel="noopener">
+                <img src="<%= path %>images/index/github-icon.svg" alt="github icon">
+            </a>
+        </div>
+        <span class="l-footer__circle" id="js-footer-circle"></span>
     </footer>
     <!-- polyfill  -->
     <script src="<%= path %>js/ofi.min.js"></script>
     <script>
         objectFitImages();
     </script>
-    <!-- jquery -->
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.3.2/jquery-migrate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- common -->
     <script type="text/javascript" src="<%= path %>js/script.min.js"></script>
+    <script>document.addEventListener('touchstart',function(){});</script>
 </body>
 </html>

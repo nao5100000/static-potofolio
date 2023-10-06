@@ -1,0 +1,35 @@
+@use "../../foundation/color" as c;
+@use "../../foundation/font" as f;
+@use "../../foundation/mixin" as m;
+
+.pg-index-horizontal{
+    overflow: hidden;
+    padding-bottom: 90px;
+    position: relative;
+    z-index: 50;
+    @include m.mq(sp_min){
+        display: none;
+    }
+    .hor-wrapper{
+        width: 120vw;
+        left: -10vw;
+        will-change: transform;
+        transition: transform .45s var(--cb01);
+        @include m.flexbox(space-between,center,nowrap);
+        &-reverse{
+            left: initial;
+            right: -10vw;
+        }
+        &__card{
+            width: 25%;
+            padding: 1.25vw;
+            .img_wrapper{
+                background: var(--sub-color);
+                padding: 2vw;
+            }
+            img{
+                width: 100%;
+            }
+        }
+    }
+}

@@ -16,9 +16,7 @@
     <meta name="ROBOTS" content="NOODP" />
     <link rel="canonical" href="https://example.com/<%= meta.dir %>">
     <link rel="dns-prefetch" href="//example.com/">
-    <link rel="dns-prefetch" href="//code.jquery.com/">
     <link rel="preconnect" href="//example.com/">
-    <link rel="preconnect" href="//code.jquery.com/">
     <link rel="prefetch" href="<%= path %>css/style.min.css">
     <link rel="prefetch" href="<%= path %>js/script.min.js">
     <!-- css -->
@@ -28,43 +26,58 @@
     <link rel="shortcut icon" type="image/x-icon" href="<%= path %>images/common/favicon32×32.ico">
     <link rel="shortcut icon" type="image/x-icon" href="<%= path %>images/common/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="<%= path %>images/common/apple-touch-icon.png">
-    <script type="application/id+json">
-        {
-            "@context" : "http://schema.org",
-            "@type" : "Corporation",
-            "name" : "Company Name",
-            "url" : "https://example.com/",
-            "logo" : "https://example.com/images/common/logo.svg",
-            "telephone" : "053-000-0000",
-            "address" : "{
-                "@type" : "PostalAddress",
-                "postalCode" : "000-0000",
-                "addressRegion" : "静岡県",
-                "addressLocality" : "",
-                "streetAddress" : ""
-            }"
-        }
-    </script>
 </head>
-<body>
-    <header class="l-header">
-        <div class="l-inner__flex">
-            <h1 class="l-header__logo"><a href=""><img src="<%= path %>images/sample/sample-logo.png" alt=""/></a></h1>
-            <div class="l-header-right">
-                <nav id="js-global-menu" class="global__menu">
-                    <ul>
-                        <li><a href="">menu 1</a></li>
-                        <li><a href="">menu 2</a></li>
-                        <li><a href="">menu 3</a></li>
-                        <li><a href="">menu 4</a></li>
-                    </ul>
-                </nav>
-                <a id="js-menu-toggle" class="hamburger__menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </a>
-                <a href="" class="contact__button"><i class="material-icon" data-icon="&#57688;"></i><span class="button__font">お問い合わせ</span></a>
-            </div>
-        </div>
-    </header>
+<body ontouchstart="">
+<header class="l-header">
+    <div class="l-header__wrapper" id="js-nav">
+        <nav class="l-header__nav">
+            <ul>
+                <li class="only-sp">
+                    <a href="" class="link js-stick-link">
+                        <!-- <i class="fa-solid fa-house"></i> -->
+                        <span>🏠</span>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="js-stick-link">
+                        <!-- <i class="fa-solid fa-person"></i> -->
+                        <span>👩‍💻</span>
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="js-stick-link">
+                        <!-- <i class="fa-regular fa-lightbulb"></i> -->
+                        <span>💡</span>
+                        Work
+                    </a>
+                </li>
+                <li>
+                    <a href="<%= path %>images/index/resume.pdf" class="js-stick-link" target="_blank" rel="noopener">
+                        <!-- <i class="fa-regular fa-address-card"></i> -->
+                        <span>📄</span>
+                        Resume
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="js-stick-link">
+                        <!-- <i class="fa-regular fa-paper-plane"></i> -->
+                        <span>📮</span>
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <label class="l-header__toggle" id="js-toggle">
+            <input id="toggle" class="toggle_input" type='checkbox' />
+        </label>
+    </div>
+    <div class="l-header__ham js-stick-link" id="js-ham">
+        <span class="l-header__ham__border js-stick-link"></span>
+    </div>
+    <span class="ham_circle" id="js-ham-bg"></span>
+</header>
+<div class="c-top-button js-stick-link" id="js-top-button">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);"><defs><clipPath id="__lottie_element_6"><rect width="120" height="120" x="0" y="0"></rect></clipPath></defs><g clip-path="url(#__lottie_element_6)"><g transform="matrix(1,0,0,1,59.887001037597656,60.80799865722656)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1.0324599742889404,0,0,1.0324599742889404,0.11299999803304672,-0.8080000281333923)"><path stroke-linecap="round" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(168,244,225)" stroke-opacity="1" stroke-width="10" d=" M0,-51.62200164794922 C28.510000228881836,-51.62200164794922 51.62200164794922,-28.510000228881836 51.62200164794922,0 C51.62200164794922,28.510000228881836 28.510000228881836,51.62200164794922 0,51.62200164794922 C-28.510000228881836,51.62200164794922 -51.62200164794922,28.510000228881836 -51.62200164794922,0 C-51.62200164794922,-28.43899917602539 -28.624000549316406,-51.50699996948242 -0.21199999749660492,-51.62099838256836 C-0.14100000262260437,-51.62099838256836 -0.07100000232458115,-51.62200164794922 0,-51.62200164794922z"></path></g></g></g></svg>
+</div>

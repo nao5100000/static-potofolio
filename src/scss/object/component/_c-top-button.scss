@@ -1,0 +1,45 @@
+@use "../../foundation/color" as c;
+@use "../../foundation/font" as f;
+@use "../../foundation/mixin" as m;
+
+.c-top-button{
+    position: fixed;
+    bottom: 30px;
+    right: 5%;
+    z-index: 100;
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    transition: transform .3s var(--cb01);
+    box-shadow: var(--bs-normal03);
+    transform: translate(0,90px);
+    cursor: pointer;
+    &::before,&::after{
+        content: "";
+        display: block;
+        position: absolute;
+        left: 50%;
+    }
+    &::before{
+        background: black;
+        height: 20px;
+        width: 2px;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    &::after{
+        width: 10px;
+        height: 10px;
+        border-left: 2px solid black;
+        border-top: 2px solid black;
+        top: calc(50% - 5px);
+        transform: translate(-50%,-50%) rotate(45deg);
+    }
+    svg{
+        path{
+            stroke-width: 0;
+            stroke-dasharray: 0 69;
+        }
+    }
+}

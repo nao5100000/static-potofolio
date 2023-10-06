@@ -1,8 +1,8 @@
 {
     "top": {
         "page": "top",
-        "title": "(各ページ毎のタイトル)",
-        "description": "(各ページ毎の説明)",
+        "title": "My Portofolio",
+        "description": "This pagr is My Portofolio",
         "dir": ""
     }
 }

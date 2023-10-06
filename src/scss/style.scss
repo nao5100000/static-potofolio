@@ -8,4 +8,23 @@
 @use "layout/l-inner-flex";
 
 //Component
-@use "object/component/c-breadcrumbs";
+@use "object/component/c-all-link";
+@use "object/component/c-top-button";
+@use "object/component/c-button";
+@use "object/component/c-loading";
+
+//Project
+
+
+//Utility
+@use "object/utility/u-width-960";
+@use "object/utility/u-width-1200";
+@use "object/utility/u-br";
+
+
+//Pages
+@use "pages/index/pg-index-main";
+@use "pages/index/pg-index-skill";
+@use "pages/index/pg-index-about";
+@use "pages/index/pg-index-works";
+@use "pages/index/pg-index-horizontal";
