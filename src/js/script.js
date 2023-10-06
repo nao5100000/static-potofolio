@@ -245,6 +245,8 @@ mm.add("(max-width: 1024px)", () => {
 });
 
 
+
+
 const applyTheme = (themeName) => {
     sessionStorage.setItem('theme', themeName);
     document.documentElement.className = themeName;
@@ -317,9 +319,63 @@ document.addEventListener('scroll', () => {
     }
 })
 
-topButton.addEventListener('click',()=>{
+topButton.addEventListener('click', () => {
     window.scroll({ top: 0, behavior: "smooth" });
 })
 
 
+const loadingWrapper = document.getElementById('js-loading');
+const loadingText = document.querySelectorAll('#js-loading .en span')
+const loadingTextJp = document.querySelectorAll('#js-loading .jp span')
+const title = document.getElementById('js-title')
+const tl = gsap.timeline();
 
+let visitStatus = sessionStorage.getItem('status');
+if (visitStatus === 'visited') {
+    loadingWrapper.style.display = "none";
+} else {
+    loadingWrapper.style.display = "block";
+    gsap.set(loadingText, { y: 60 });
+    gsap.set(loadingTextJp, { y: 60, opacity: 0 });
+    gsap.set(title, { y: 10, opacity: 0 });
+    tl.to(
+        loadingText,
+        {
+            y: 0,
+            stagger: 0.05,
+            delay: 0.2,
+            duration: 0.5,
+        },
+        0
+    ).to(
+        loadingText,
+        {
+            y: -100,
+            stagger: 0.05,
+            duration: 0.5,
+        },
+    ).to(
+        loadingTextJp,
+        {
+            opacity: 1,
+            y: 0,
+            stagger: 0.05,
+            duration: 0.5,
+            delay: -0.1,
+        }
+    ).to(
+        loadingWrapper,
+        {
+            scaleY: 0,
+            duration: 1,
+        }
+    ).to(
+        title,
+        {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+        }
+    )
+    sessionStorage.setItem('status', 'visited');
+}
