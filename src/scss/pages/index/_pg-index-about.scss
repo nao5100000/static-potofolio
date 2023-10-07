@@ -27,15 +27,27 @@
     }
 
     .img_wrapper{
+        position: relative;
         width: 42%;
         box-shadow: var(--bs-normal03);
         @include m.mq(sp_min){
             width: 100%;
         }
+        &__hide{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120%;
+            height: 120%;
+            background: var(--base-color);
+            z-index: 100;
+            transform: translate(-50%,-50%);
+            transform-origin: top;
+        }
         &__inner{
             overflow: hidden;
             width: 100%;
-            padding-top: 120%;
+            padding-top: 110%;
             position: relative;
         }
         img{

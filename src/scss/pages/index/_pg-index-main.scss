@@ -105,6 +105,9 @@
                 top: 111px;
                 right: 64px;
                 background-color: c.$green;
+                @include m.mq(sp_min){
+                    top: 140px;
+                }
             }
             &-7{
                 width: 9px;
@@ -113,14 +116,21 @@
                 top: 213px;
                 right: 104px;
                 background-color: c.$purple;
+                @include m.mq(sp_min){
+                    top: -40px;
+                }
             }
             &-6{
                 width: 12px;
                 height: 12px;
                 opacity: .8;
-                top: 251px;
+                top: 161px;
                 right: 262px;
                 background: c.$pink;
+                @include m.mq(sp_min){
+                    top: 120px;
+                    right: 10px;
+                }
             }
             &-5{
                 width: 12px;
@@ -129,6 +139,10 @@
                 top: 203px;
                 right: 448px;
                 background: c.$green;
+                @include m.mq(sp_min){
+                    top: 173px;
+                    right: 148px;
+                }
             }
             &-4{
                 width: 15px;
@@ -138,22 +152,34 @@
                 position: absolute;
                 top: 64px;
                 right: 428px;
+                @include m.mq(sp_min){
+                    top: 14px;
+                    left: -20px;
+                }
             }
             &-3{
                 width: 9px;
                 height: 9px;
                 opacity: .4;
                 top: 94px;
-                right: 624px;
+                right: 564px;
                 background: c.$purple;
+                @include m.mq(sp_min){
+                    top: -66px;
+                    right: 64px;
+                }
             }
             &-2{
                 width: 9px;
                 height: 9px;
                 opacity: .4;
-                top: 94px;
-                right: 624px;
+                top: 4px;
+                right: 474px;
                 background: c.$pink;
+                @include m.mq(sp_min){
+                    top: 64px;
+                    right: -10px;
+                }
             }
             &-1{
                 width: 20px;
