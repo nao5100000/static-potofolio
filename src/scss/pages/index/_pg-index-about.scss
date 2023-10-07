@@ -5,6 +5,7 @@
 .pg-index-about{
     @include m.flexbox(space-between,center,wrap);
     margin-bottom: 120px;
+    overflow: hidden;
     p{
         text-align: left;
         width: 45%;

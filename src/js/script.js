@@ -10,14 +10,7 @@ for (let link of links) {
         }
     }
 }
-// const lenis = new Lenis()
 
-// function raf(time) {
-//     lenis.raf(time)
-//     requestAnimationFrame(raf)
-// }
-
-// requestAnimationFrame(raf)
 
 // Open global menu
 const menuBtn = document.getElementById('js-menu-toggle');
@@ -66,7 +59,7 @@ const responsiveHam = () => {
     } else {
         ham.classList.remove('is_active');
         nav.classList.remove('is_hidden');
-        if(hamBg.classList.contains('is_active')) hamBg.classList.remove('is_active')
+        if (hamBg.classList.contains('is_active')) hamBg.classList.remove('is_active')
     }
 }
 window.addEventListener('resize', () => {
@@ -238,7 +231,7 @@ gsapFadeIn(gsapFadeInOpacity, 60, 0, 2);
 let mm = gsap.matchMedia();
 const footer = document.querySelector('footer');
 const footerCircle = document.getElementById('js-footer-circle');
-const gsapFooter = (trigger,triggerX) => {
+const gsapFooter = (trigger, triggerX) => {
     gsap.to(footerCircle, {
         scaleY: 0,
         ease: 'Power1.easeOut',
@@ -252,15 +245,15 @@ const gsapFooter = (trigger,triggerX) => {
 }
 gsapFooter('.pg-index-horizontal')
 mm.add("(max-width: 1024px)", () => {
-    gsapFooter('.pg-index-works','top');
+    gsapFooter('.pg-index-works', 'top');
 });
 mm.add("(max-width: 500px)", () => {
-    gsapFooter('.pg-index-works','20%');
+    gsapFooter('.pg-index-works', '20%');
 });
 
 
 const gsapHiddenImg = document.querySelectorAll('.js-img-hide');
-for(let i=0;i<gsapHiddenImg.length;i++){
+for (let i = 0; i < gsapHiddenImg.length; i++) {
     gsap.to(gsapHiddenImg[i], {
         scaleY: 0,
         ease: 'Power1.easeIn',
@@ -332,17 +325,17 @@ switchToggle.addEventListener('change', () => {
     }
 })
 
-const bodyHeight = document.body.clientHeight;
-const windowHeight = window.innerHeight;
-const bottomPoint = bodyHeight - windowHeight;
-document.addEventListener('scroll', () => {
-    let currentPos = window.scrollY;
-    if (bottomPoint <= currentPos) {
-        console.log('true')
-    } else {
-        console.log('false')
-    }
-})
+// const bodyHeight = document.body.clientHeight;
+// const windowHeight = window.innerHeight;
+// const bottomPoint = bodyHeight - windowHeight;
+// document.addEventListener('scroll', () => {
+//     let currentPos = window.scrollY;
+//     if (bottomPoint <= currentPos) {
+//         console.log('true')
+//     } else {
+//         console.log('false')
+//     }
+// })
 
 topButton.addEventListener('click', () => {
     window.scroll({ top: 0, behavior: "smooth" });
