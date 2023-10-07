@@ -27,11 +27,15 @@
                 <p class="js-fadeIn"><span class="line"><span class="line_inner">I</span></span> <span class="line"><span class="line_inner">have</span></span> <span class="line"><span class="line_inner">been</span></span> <span class="line"><span class="line_inner">working</span></span> <span class="line"><span class="line_inner">in</span></span> <span class="line"><span class="line_inner">a</span></span> <span class="line"><span class="line_inner">web</span></span> <span class="line"><span class="line_inner">development</span></span> <span class="line"><span class="line_inner">company</span></span> <span class="line"><span class="line_inner">as</span></span> <span class="line"><span class="line_inner">a</span></span> <span class="line pc-emoji"><span class="line_inner">coder</span></span> <span class="line"><span class="line_inner">for</span></span> <span class="line"><span class="line_inner">about</span></span> <span class="line"><span class="line_inner">4</span></span> <span class="line"><span class="line_inner">years.</span></span><br>
                     <span class="line"><span class="line_inner">During</span></span> <span class="line"><span class="line_inner">this</span></span>  <span class="line"><span class="line_inner">time,</span></span> <span class="line"><span class="line_inner">I</span></span> <span class="line"><span class="line_inner">have</span></span> <span class="line"><span class="line_inner">focused</span></span> <span class="line"><span class="line_inner">on</span></span> <span class="line"><span class="line_inner">coding</span></span> <span class="line"><span class="line_inner">with</span></span> <span class="line"><span class="line_inner">an</span></span> <span class="line"><span class="line_inner">emphasis</span></span> <span class="line"><span class="line_inner">on</span></span> <span class="line"><span class="line_inner">UX</span></span> <span class="line"><span class="line_inner">and</span></span> <span class="line"><span class="line_inner">SEO.</span></span><br>
                 <span class="line"><span class="line_inner">My</span></span> <span class="line"><span class="line_inner">goal</span></span> <span class="line"><span class="line_inner">has</span></span> <span class="line"><span class="line_inner">always</span></span> <span class="line"><span class="line_inner">been</span></span> <span class="line"><span class="line_inner">to</span></span> <span class="line"><span class="line_inner">achieve</span></span> <span class="line"><span class="line_inner">clean</span></span> <span class="line"><span class="line_inner">and</span></span> <span class="line"><span class="line_inner">concise</span></span> <span class="line"><span class="line_inner">coding</span></span> <span class="line"><span class="line_inner">while</span></span> <span class="line"><span class="line_inner">keeping</span></span> <span class="line"><span class="line_inner">design</span></span> <span class="line"><span class="line_inner">principles</span></span> <span class="line"><span class="line_inner">in</span></span> <span class="line"><span class="line_inner">mind.</span></span></p>
-                <div class="img_wrapper js-fadeIn-opacity">
-                    <div class="img_wrapper__inner">
+                <div class="img_wrapper">
+                    <span class="img_wrapper__hide js-img-hide"></span>
+                    <div class="img_wrapper__inner js-fadeIn-opacity">
                         <img src="<%= path %>images/index/about_img.jpg" alt="about img" class="js-parallax">
                     </div>
                 </div>
+                <a href="" class="c-button js-stick-link js-fadeIn-opacity" ontouchstart="">
+                    <span>View about</span>
+                </a>
             </section>
             <section class="pg-index-skill u-width-1200">
                 <dl class="skill-card js-fadeIn-opacity">
@@ -47,7 +51,7 @@
                     <dt><span>🎨</span>UX-Centric Design</dt>
                     <dd>My proficiency in Photoshop and XD enables me to craft designs that prioritize user experience (UX). I strive to create visually appealing and user-friendly interfaces that captivate and retain your audience.</dd>
                 </dl>
-                <a href="" class="c-button js-stick-link js-fadeIn-opacity">
+                <a href="<%= path %>images/index/resume.pdf" class="c-button js-stick-link js-fadeIn-opacity" ontouchstart="" target="_blank" rel="noopner">
                     <span>View my resume</span>
                 </a>
             </section>
@@ -55,11 +59,11 @@
                 <div class="pg-index-works__pointer" id="js-pointer">
                     View
                 </div>
-                <div class="works-card js-hover js-fadeIn-opacity">
-                    <div class="works-card__wrapper">
+                <div class="p-works-card js-hover js-fadeIn-opacity">
+                    <div class="p-works-card__wrapper">
                         <img src="<%= path %>images/index/works_lunon.jpg" alt="lunon_img">
                     </div>
-                    <div class="works-card__text">
+                    <div class="p-works-card__text">
                         <span class="year">2023</span>
                         <p class="company">Aoki</p>
                         <p class="position">Development</p>
@@ -73,11 +77,11 @@
                     </div>
                     <a href="https://studiolunon.com/" class="c-all-link" target="_blank" rel="noopener"></a>
                 </div>
-                <div class="works-card js-hover js-fadeIn-opacity">
-                    <div class="works-card__wrapper">
+                <div class="p-works-card js-hover js-fadeIn-opacity">
+                    <div class="p-works-card__wrapper">
                         <img src="<%= path %>images/index/works_daytona.jpg" alt="daytona_img">
                     </div>
-                    <div class="works-card__text">
+                    <div class="p-works-card__text">
                         <span class="year">2022</span>
                         <p class="company">Daytona Inc.</p>
                         <p class="position">Development</p>
@@ -90,11 +94,11 @@
                     </div>
                     <a href="https://engineguard.daytona.co.jp/" class="c-all-link" target="_blank" rel="noopener"></a>
                 </div>
-                <div class="works-card js-hover js-fadeIn-opacity">
-                    <div class="works-card__wrapper">
+                <div class="p-works-card js-hover js-fadeIn-opacity">
+                    <div class="p-works-card__wrapper">
                         <img src="<%= path %>images/index/works_kurazemi.jpg" alt="kurazemi_img">
                     </div>
-                    <div class="works-card__text">
+                    <div class="p-works-card__text">
                         <span class="year">2021</span>
                         <p class="company">Kurazemi Inc.</p>
                         <p class="position">Development</p>
@@ -107,11 +111,11 @@
                     </div>
                     <a href="https://kurazemi-juku.com/" class="c-all-link" target="_blank" rel="nopner"></a>
                 </div>
-                <div class="works-card js-hover js-fadeIn-opacity">
-                    <div class="works-card__wrapper">
+                <div class="p-works-card js-hover js-fadeIn-opacity">
+                    <div class="p-works-card__wrapper">
                         <img src="<%= path %>images/index/works_adamas.jpg" alt="adamas_img">
                     </div>
-                    <div class="works-card__text">
+                    <div class="p-works-card__text">
                         <span class="year">2021</span>
                         <p class="company">Adamas Inc.</p>
                         <p class="position">Development</p>
@@ -170,13 +174,13 @@
                         </div>
                     </div>
                 </div>
-                <a href="" class="c-button js-stick-link js-fadeIn-opacity">
+                <a href="" class="c-button js-stick-link js-fadeIn-opacity" ontouchstart="">
                     <span>View work</span>
                 </a>
             </section>
             <div class="c-loading" id="js-loading">
                 <p class="en"><span>H</span><span>E</span><span>L</span><span>L</span><span>O</span><span>!</span></p>
-                <p class="jp"><span>こ</span><span>ん</span><span>に</span><span>ち</span><span>は</span><span>！</span></p>
+                <p class="jp"><span>W</span><span>e</span><span>l</span><span>c</span><span>o</span><span>m</span><span>e</span></p>
             </div>
         </main>
 <%-
