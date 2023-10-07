@@ -10,6 +10,14 @@ for (let link of links) {
         }
     }
 }
+// const lenis = new Lenis()
+
+// function raf(time) {
+//     lenis.raf(time)
+//     requestAnimationFrame(raf)
+// }
+
+// requestAnimationFrame(raf)
 
 // Open global menu
 const menuBtn = document.getElementById('js-menu-toggle');
@@ -28,7 +36,10 @@ ham.addEventListener('click', () => {
     nav.classList.contains('is_active') ? nav.classList.remove('is_active') : nav.classList.add('is_active')
     ham.classList.contains('is_open') ? ham.classList.remove('is_open') : ham.classList.add('is_open')
 })
-
+window.onload = () => {
+    ham.classList.contains('is_open') ? nav.classList.add('is_hidden') : nav.classList.remove('is_hidden')
+    ham.classList.contains('is_open') ? hamBg.classList.add('is_active') : nav.classList.remove('is_active')
+}
 window.addEventListener('scroll', () => {
     y = window.scrollY;
     if (500 <= y) {
@@ -42,7 +53,7 @@ window.addEventListener('scroll', () => {
         if (hamBg.classList.contains('is_active')) hamBg.classList.remove('is_active');
         responsiveHam()
     }
-    if (y <= 90) topButton.style.transform = `translate(0,${90 - y}px)`
+    y <= 90 ? topButton.style.transform = `translate(0,90px)` : topButton.style.transform = `translate(0,0)`
 })
 
 let windowW;
@@ -51,9 +62,11 @@ const responsiveHam = () => {
     if (windowW <= 480) {
         ham.classList.add('is_active');
         nav.classList.add('is_hidden');
+        ham.classList.contains('is_open') ? hamBg.classList.add('is_active') : nav.classList.remove('is_active')
     } else {
         ham.classList.remove('is_active');
         nav.classList.remove('is_hidden');
+        if(hamBg.classList.contains('is_active')) hamBg.classList.remove('is_active')
     }
 }
 window.addEventListener('resize', () => {
@@ -79,8 +92,6 @@ window.onload = () => {
     }
     document.getElementById(window.location.hash.slice(1)).scrollIntoView(true);
 }
-
-
 
 let y, num, num02, num03;
 const particleW = document.getElementById('js-particle-wrapper');
@@ -227,25 +238,39 @@ gsapFadeIn(gsapFadeInOpacity, 60, 0, 2);
 let mm = gsap.matchMedia();
 const footer = document.querySelector('footer');
 const footerCircle = document.getElementById('js-footer-circle');
-const gsapFooter = (trigger) => {
+const gsapFooter = (trigger,triggerX) => {
     gsap.to(footerCircle, {
         scaleY: 0,
         ease: 'Power1.easeOut',
         scrollTrigger: {
             trigger: trigger,
-            start: 'top top',
-            end: () => innerHeight + ' top',
+            start: `${triggerX} top`,
+            // end: () => innerHeight + ' top',
             scrub: true,
         }
     })
 }
 gsapFooter('.pg-index-horizontal')
 mm.add("(max-width: 1024px)", () => {
-    gsapFooter('.pg-index-works')
+    gsapFooter('.pg-index-works','top');
+});
+mm.add("(max-width: 500px)", () => {
+    gsapFooter('.pg-index-works','20%');
 });
 
 
-
+const gsapHiddenImg = document.querySelectorAll('.js-img-hide');
+for(let i=0;i<gsapHiddenImg.length;i++){
+    gsap.to(gsapHiddenImg[i], {
+        scaleY: 0,
+        ease: 'Power1.easeIn',
+        duration: 2.4,
+        scrollTrigger: {
+            trigger: gsapHiddenImg[i],
+            start: 'top 80%',
+        }
+    })
+}
 
 const applyTheme = (themeName) => {
     sessionStorage.setItem('theme', themeName);
@@ -368,6 +393,7 @@ if (visitStatus === 'visited') {
         {
             scaleY: 0,
             duration: 1,
+            ease: Power2.easeOut
         }
     ).to(
         title,
@@ -379,3 +405,5 @@ if (visitStatus === 'visited') {
     )
     sessionStorage.setItem('status', 'visited');
 }
+
+
