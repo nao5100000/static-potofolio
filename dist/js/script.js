@@ -24,13 +24,7 @@ try {
         link.setAttribute('rel', 'noopener');
       }
     }
-  } // const lenis = new Lenis()
-  // function raf(time) {
-  //     lenis.raf(time)
-  //     requestAnimationFrame(raf)
-  // }
-  // requestAnimationFrame(raf)
-  // Open global menu
+  } // Open global menu
 
 } catch (err) {
   _iterator.e(err);
@@ -132,7 +126,7 @@ var topParticle = function topParticle() {
   });
 };
 
-topParticle();
+if (particleW) topParticle();
 
 var mouseHover = function mouseHover() {
   var pointerArea = document.querySelectorAll('.js-hover');
@@ -213,7 +207,7 @@ var topParticleSticker = function topParticleSticker() {
   });
 };
 
-topParticleSticker();
+if (frontParticles.length > 0) topParticleSticker();
 gsap.utils.toArray('.js-parallax').forEach(function (wrap) {
   var y = wrap.getAttribute('data-y') || -100;
   gsap.to(wrap, {
@@ -248,8 +242,8 @@ var gsapFadeIn = function gsapFadeIn(target, y, o, time) {
 
 var gsapFadeInTarget = document.querySelectorAll('.js-fadeIn .line_inner');
 var gsapFadeInOpacity = document.querySelectorAll('.js-fadeIn-opacity');
-gsapFadeIn(gsapFadeInTarget, 40, 1, 1.5);
-gsapFadeIn(gsapFadeInOpacity, 60, 0, 2);
+if (gsapFadeInTarget.length > 0) gsapFadeIn(gsapFadeInTarget, 100, 1, 1.5);
+if (gsapFadeInOpacity.length > 0) gsapFadeIn(gsapFadeInOpacity, 60, 0, 2);
 var mm = gsap.matchMedia();
 var footer = document.querySelector('footer');
 var footerCircle = document.getElementById('js-footer-circle');
@@ -276,16 +270,18 @@ mm.add("(max-width: 500px)", function () {
 });
 var gsapHiddenImg = document.querySelectorAll('.js-img-hide');
 
-for (var i = 0; i < gsapHiddenImg.length; i++) {
-  gsap.to(gsapHiddenImg[i], {
-    scaleY: 0,
-    ease: 'Power1.easeIn',
-    duration: 2.4,
-    scrollTrigger: {
-      trigger: gsapHiddenImg[i],
-      start: 'top 80%'
-    }
-  });
+if (gsapHiddenImg.length > 0) {
+  for (var i = 0; i < gsapHiddenImg.length; i++) {
+    gsap.to(gsapHiddenImg[i], {
+      scaleY: 0,
+      ease: 'Power1.easeIn',
+      duration: 2.4,
+      scrollTrigger: {
+        trigger: gsapHiddenImg[i],
+        start: 'top 80%'
+      }
+    });
+  }
 }
 
 var applyTheme = function applyTheme(themeName) {
@@ -349,19 +345,18 @@ switchToggle.addEventListener('change', function () {
   } else {
     applyTheme("is-theme-light");
   }
-});
-var bodyHeight = document.body.clientHeight;
-var windowHeight = window.innerHeight;
-var bottomPoint = bodyHeight - windowHeight;
-document.addEventListener('scroll', function () {
-  var currentPos = window.scrollY;
+}); // const bodyHeight = document.body.clientHeight;
+// const windowHeight = window.innerHeight;
+// const bottomPoint = bodyHeight - windowHeight;
+// document.addEventListener('scroll', () => {
+//     let currentPos = window.scrollY;
+//     if (bottomPoint <= currentPos) {
+//         console.log('true')
+//     } else {
+//         console.log('false')
+//     }
+// })
 
-  if (bottomPoint <= currentPos) {
-    console.log('true');
-  } else {
-    console.log('false');
-  }
-});
 topButton.addEventListener('click', function () {
   window.scroll({
     top: 0,
@@ -375,44 +370,89 @@ var title = document.getElementById('js-title');
 var tl = gsap.timeline();
 var visitStatus = sessionStorage.getItem('status');
 
-if (visitStatus === 'visited') {
-  loadingWrapper.style.display = "none";
-} else {
-  loadingWrapper.style.display = "block";
-  gsap.set(loadingText, {
-    y: 60
+if (loadingWrapper) {
+  if (visitStatus === 'visited') {
+    loadingWrapper.style.display = "none";
+  } else {
+    loadingWrapper.style.display = "block";
+    gsap.set(loadingText, {
+      y: 60
+    });
+    gsap.set(loadingTextJp, {
+      y: 60,
+      opacity: 0
+    });
+    gsap.set(title, {
+      y: 10,
+      opacity: 0
+    });
+    tl.to(loadingText, {
+      y: 0,
+      stagger: 0.05,
+      delay: 0.2,
+      duration: 0.5
+    }, 0).to(loadingText, {
+      y: -100,
+      stagger: 0.05,
+      duration: 0.5
+    }).to(loadingTextJp, {
+      opacity: 1,
+      y: 0,
+      stagger: 0.05,
+      duration: 0.5,
+      delay: -0.1
+    }).to(loadingWrapper, {
+      scaleY: 0,
+      duration: 1,
+      ease: Power2.easeOut
+    }).to(title, {
+      opacity: 1,
+      y: 0,
+      duration: 0.9
+    });
+    sessionStorage.setItem('status', 'visited');
+  }
+}
+
+var searchTriggers = document.querySelectorAll('#js-search li');
+var searchTargets = document.querySelectorAll('.js-search-target');
+var id, activeSearchTrigger;
+
+var _loop = function _loop(_i) {
+  searchTriggers[_i].addEventListener('click', function () {
+    activeSearchTrigger = document.querySelector('#js-search .is_active');
+    activeSearchTrigger.classList.remove('is_active');
+
+    searchTriggers[_i].classList.add('is_active');
+
+    id = searchTriggers[_i].getAttribute("id");
+
+    var _iterator2 = _createForOfIteratorHelper(searchTargets),
+        _step2;
+
+    try {
+      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+        var searchTarget = _step2.value;
+        var dataContentArray = searchTarget.getAttribute('data-content');
+
+        if (dataContentArray.indexOf(id) != -1) {
+          searchTarget.style.display = "block";
+        } else if (id === 'all') {
+          Array.from(searchTargets).map(function (searchTarget) {
+            searchTarget.style.display = "block";
+          });
+        } else {
+          searchTarget.style.display = "none";
+        }
+      }
+    } catch (err) {
+      _iterator2.e(err);
+    } finally {
+      _iterator2.f();
+    }
   });
-  gsap.set(loadingTextJp, {
-    y: 60,
-    opacity: 0
-  });
-  gsap.set(title, {
-    y: 10,
-    opacity: 0
-  });
-  tl.to(loadingText, {
-    y: 0,
-    stagger: 0.05,
-    delay: 0.2,
-    duration: 0.5
-  }, 0).to(loadingText, {
-    y: -100,
-    stagger: 0.05,
-    duration: 0.5
-  }).to(loadingTextJp, {
-    opacity: 1,
-    y: 0,
-    stagger: 0.05,
-    duration: 0.5,
-    delay: -0.1
-  }).to(loadingWrapper, {
-    scaleY: 0,
-    duration: 1,
-    ease: Power2.easeOut
-  }).to(title, {
-    opacity: 1,
-    y: 0,
-    duration: 0.9
-  });
-  sessionStorage.setItem('status', 'visited');
+};
+
+for (var _i = 0; _i < searchTriggers.length; _i++) {
+  _loop(_i);
 }
