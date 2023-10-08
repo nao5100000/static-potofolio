@@ -2,7 +2,13 @@
     "top": {
         "page": "top",
         "title": "My Portofolio",
-        "description": "This pagr is My Portofolio",
+        "description": "This page is My Portofolio",
+        "dir": ""
+    },
+    "works": {
+        "page": "works",
+        "title": "works | My Portofolio",
+        "description": "This page is about my works",
         "dir": ""
     }
 }
