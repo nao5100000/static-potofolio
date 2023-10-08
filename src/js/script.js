@@ -109,7 +109,7 @@ const topParticle = () => {
         horizontal[1].style.transform = `matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, ${num03}, 0, 0, 1)`;
     })
 }
-topParticle();
+if (particleW) topParticle();
 
 
 
@@ -190,7 +190,8 @@ const topParticleSticker = () => {
         buttonSticerAddEvent(particleW, backParticle, .03);
     })
 };
-topParticleSticker();
+if (frontParticles.length > 0) topParticleSticker();
+
 
 gsap.utils.toArray('.js-parallax').forEach(wrap => {
     const y = wrap.getAttribute('data-y') || -100;
@@ -224,8 +225,8 @@ const gsapFadeIn = (target, y, o, time) => {
 
 const gsapFadeInTarget = document.querySelectorAll('.js-fadeIn .line_inner');
 const gsapFadeInOpacity = document.querySelectorAll('.js-fadeIn-opacity');
-gsapFadeIn(gsapFadeInTarget, 40, 1, 1.5);
-gsapFadeIn(gsapFadeInOpacity, 60, 0, 2);
+if (gsapFadeInTarget.length > 0) gsapFadeIn(gsapFadeInTarget, 100, 1, 1.5);
+if (gsapFadeInOpacity.length > 0) gsapFadeIn(gsapFadeInOpacity, 60, 0, 2);
 
 
 let mm = gsap.matchMedia();
@@ -253,16 +254,18 @@ mm.add("(max-width: 500px)", () => {
 
 
 const gsapHiddenImg = document.querySelectorAll('.js-img-hide');
-for (let i = 0; i < gsapHiddenImg.length; i++) {
-    gsap.to(gsapHiddenImg[i], {
-        scaleY: 0,
-        ease: 'Power1.easeIn',
-        duration: 2.4,
-        scrollTrigger: {
-            trigger: gsapHiddenImg[i],
-            start: 'top 80%',
-        }
-    })
+if (gsapHiddenImg.length > 0) {
+    for (let i = 0; i < gsapHiddenImg.length; i++) {
+        gsap.to(gsapHiddenImg[i], {
+            scaleY: 0,
+            ease: 'Power1.easeIn',
+            duration: 2.4,
+            scrollTrigger: {
+                trigger: gsapHiddenImg[i],
+                start: 'top 80%',
+            }
+        })
+    }
 }
 
 const applyTheme = (themeName) => {
@@ -349,54 +352,80 @@ const title = document.getElementById('js-title')
 const tl = gsap.timeline();
 
 let visitStatus = sessionStorage.getItem('status');
-if (visitStatus === 'visited') {
-    loadingWrapper.style.display = "none";
-} else {
-    loadingWrapper.style.display = "block";
-    gsap.set(loadingText, { y: 60 });
-    gsap.set(loadingTextJp, { y: 60, opacity: 0 });
-    gsap.set(title, { y: 10, opacity: 0 });
-    tl.to(
-        loadingText,
-        {
-            y: 0,
-            stagger: 0.05,
-            delay: 0.2,
-            duration: 0.5,
-        },
-        0
-    ).to(
-        loadingText,
-        {
-            y: -100,
-            stagger: 0.05,
-            duration: 0.5,
-        },
-    ).to(
-        loadingTextJp,
-        {
-            opacity: 1,
-            y: 0,
-            stagger: 0.05,
-            duration: 0.5,
-            delay: -0.1,
-        }
-    ).to(
-        loadingWrapper,
-        {
-            scaleY: 0,
-            duration: 1,
-            ease: Power2.easeOut
-        }
-    ).to(
-        title,
-        {
-            opacity: 1,
-            y: 0,
-            duration: 0.9,
-        }
-    )
-    sessionStorage.setItem('status', 'visited');
+if (loadingWrapper) {
+    if (visitStatus === 'visited') {
+        loadingWrapper.style.display = "none";
+    } else {
+        loadingWrapper.style.display = "block";
+        gsap.set(loadingText, { y: 60 });
+        gsap.set(loadingTextJp, { y: 60, opacity: 0 });
+        gsap.set(title, { y: 10, opacity: 0 });
+        tl.to(
+            loadingText,
+            {
+                y: 0,
+                stagger: 0.05,
+                delay: 0.2,
+                duration: 0.5,
+            },
+            0
+        ).to(
+            loadingText,
+            {
+                y: -100,
+                stagger: 0.05,
+                duration: 0.5,
+            },
+        ).to(
+            loadingTextJp,
+            {
+                opacity: 1,
+                y: 0,
+                stagger: 0.05,
+                duration: 0.5,
+                delay: -0.1,
+            }
+        ).to(
+            loadingWrapper,
+            {
+                scaleY: 0,
+                duration: 1,
+                ease: Power2.easeOut
+            }
+        ).to(
+            title,
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.9,
+            }
+        )
+        sessionStorage.setItem('status', 'visited');
+    }
 }
 
+const searchTriggers = document.querySelectorAll('#js-search li');
 
+const searchTargets = document.querySelectorAll('.js-search-target');
+let id,activeSearchTrigger;
+for (let i = 0; i < searchTriggers.length; i++) {
+    searchTriggers[i].addEventListener('click', () => {
+        activeSearchTrigger=document.querySelector('#js-search .is_active');
+        activeSearchTrigger.classList.remove('is_active');
+        searchTriggers[i].classList.add('is_active');
+        id = searchTriggers[i].getAttribute("id");
+        for (const searchTarget of searchTargets) {
+            const dataContentArray = searchTarget.getAttribute('data-content');
+            if (dataContentArray.indexOf(id) != -1) {
+                searchTarget.style.display = "block"
+            } else if (id === 'all') {
+                Array.from(searchTargets).map((searchTarget) => {
+                    searchTarget.style.display = "block"
+                })
+            } else {
+                searchTarget.style.display = "none"
+            }
+        }
+
+    })
+}
