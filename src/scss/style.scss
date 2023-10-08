@@ -12,9 +12,10 @@
 @use "object/component/c-top-button";
 @use "object/component/c-button";
 @use "object/component/c-loading";
+@use "object/component/c-common-h2";
 
 //Project
-@use "object/project/p-works-card";
+@use "object/project/p-works-search";
 
 //Utility
 @use "object/utility/u-width-960";
@@ -26,5 +27,6 @@
 @use "pages/index/pg-index-main";
 @use "pages/index/pg-index-skill";
 @use "pages/index/pg-index-about";
-@use "pages/index/pg-index-works";
 @use "pages/index/pg-index-horizontal";
+
+@use "pages/common/pg-common-works";
