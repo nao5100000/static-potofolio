@@ -14,9 +14,9 @@
     <meta name="twitter:card" content="Summary with Large Image" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="ROBOTS" content="NOODP" />
-    <link rel="canonical" href="https://example.com/<%= meta.dir %>">
-    <link rel="dns-prefetch" href="//example.com/">
-    <link rel="preconnect" href="//example.com/">
+    <link rel="canonical" href="https://static-potofolio.vercel.app//<%= meta.dir %>">
+    <link rel="dns-prefetch" href="//static-potofolio.vercel.app/">
+    <link rel="preconnect" href="//static-potofolio.vercel.app/">
     <link rel="prefetch" href="<%= path %>css/style.min.css">
     <link rel="prefetch" href="<%= path %>js/script.min.js">
     <!-- css -->
@@ -33,7 +33,7 @@
         <nav class="l-header__nav">
             <ul>
                 <li class="only-sp">
-                    <a href="" class="link js-stick-link" ontouchstart="">
+                    <a href="/" class="link js-stick-link" ontouchstart="">
                         <!-- <i class="fa-solid fa-house"></i> -->
                         <span>🏠</span>
                         Home
@@ -47,10 +47,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="js-stick-link" ontouchstart="">
+                    <a href="<%= path %>works/" class="js-stick-link" ontouchstart="">
                         <!-- <i class="fa-regular fa-lightbulb"></i> -->
                         <span>💡</span>
-                        Work
+                        Works
                     </a>
                 </li>
                 <li>
