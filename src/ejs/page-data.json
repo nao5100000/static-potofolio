@@ -10,5 +10,11 @@
         "title": "works | My Portofolio",
         "description": "This page is about my works",
         "dir": ""
+    },
+    "prepare": {
+        "page": "prepare",
+        "title": "prepare | My Portofolio",
+        "description": "This page is about my works",
+        "dir": ""
     }
 }
