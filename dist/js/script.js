@@ -241,8 +241,10 @@ var gsapFadeIn = function gsapFadeIn(target, y, o, time) {
 };
 
 var gsapFadeInTarget = document.querySelectorAll('.js-fadeIn .line_inner');
+var gsapFadeInTitle = document.querySelectorAll('.js-fadeInTitle .line_inner');
 var gsapFadeInOpacity = document.querySelectorAll('.js-fadeIn-opacity');
-if (gsapFadeInTarget.length > 0) gsapFadeIn(gsapFadeInTarget, 100, 1, 1.5);
+if (gsapFadeInTarget.length > 0) gsapFadeIn(gsapFadeInTarget, 40, 1, 1.5);
+if (gsapFadeInTitle.length > 0) gsapFadeIn(gsapFadeInTarget, 100, 1, 1.5);
 if (gsapFadeInOpacity.length > 0) gsapFadeIn(gsapFadeInOpacity, 60, 0, 2);
 var mm = gsap.matchMedia();
 var footer = document.querySelector('footer');

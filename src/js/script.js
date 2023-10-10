@@ -224,8 +224,10 @@ const gsapFadeIn = (target, y, o, time) => {
 
 
 const gsapFadeInTarget = document.querySelectorAll('.js-fadeIn .line_inner');
+const gsapFadeInTitle = document.querySelectorAll('.js-fadeInTitle .line_inner');
 const gsapFadeInOpacity = document.querySelectorAll('.js-fadeIn-opacity');
-if (gsapFadeInTarget.length > 0) gsapFadeIn(gsapFadeInTarget, 100, 1, 1.5);
+if (gsapFadeInTarget.length > 0) gsapFadeIn(gsapFadeInTarget, 40, 1, 1.5);
+if (gsapFadeInTitle.length > 0) gsapFadeIn(gsapFadeInTarget, 100, 1, 1.5);
 if (gsapFadeInOpacity.length > 0) gsapFadeIn(gsapFadeInOpacity, 60, 0, 2);
 
 
