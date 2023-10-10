@@ -1,0 +1,61 @@
+@use "../../foundation/color" as c;
+@use "../../foundation/font" as f;
+@use "../../foundation/mixin" as m;
+
+.pg-common-about{
+    @include m.flexbox(space-between,center,wrap);
+    margin-bottom: 120px;
+    overflow: hidden;
+    p{
+        text-align: left;
+        width: 45%;
+        font-weight: var(--fw-light);
+        font-size: clamp(.9rem,3vw,.95rem);
+        @include m.mq(sp_min){
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        .pc-emoji{
+            cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>‍👩🏻‍💻</text></svg>") 16 0,auto; 
+        }
+        .line{
+            display: inline-block;
+            overflow: hidden;
+        }
+        .line_inner{
+            display: inline-block;
+        }
+    }
+
+    .img_wrapper{
+        position: relative;
+        width: 42%;
+        box-shadow: var(--bs-normal03);
+        @include m.mq(sp_min){
+            width: 100%;
+        }
+        &__hide{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120%;
+            height: 120%;
+            background: var(--base-color);
+            z-index: 100;
+            transform: translate(-50%,-50%);
+            transform-origin: top;
+        }
+        &__inner{
+            overflow: hidden;
+            width: 100%;
+            padding-top: 110%;
+            position: relative;
+        }
+        img{
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+}
